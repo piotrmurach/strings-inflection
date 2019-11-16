@@ -6,8 +6,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/strings-inflect.svg)][gem]
 [![Build Status](https://secure.travis-ci.org/piotrmurach/strings-inflect.svg?branch=master)][travis]
-[![Build status](https://ci.appveyor.com/api/projects/status/yr87c96wxp1cw2ep?svg=true)][appveyor]
-[![Maintainability](https://api.codeclimate.com/v1/badges/7938258c4af196a19843/maintainability)][codeclimate]
+[![Build status](https://ci.appveyor.com/api/projects/status/v8beeg5pmsdncvu8?svg=true)][appveyor]
+[![Maintainability](https://api.codeclimate.com/v1/badges/4951f64ee240909fbde1/maintainability)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/strings-inflect/badge.svg?branch=master)][coverage]
 [![Inline docs](http://inch-ci.org/github/piotrmurach/strings-inflect.svg?branch=master)][inchpages]
 
