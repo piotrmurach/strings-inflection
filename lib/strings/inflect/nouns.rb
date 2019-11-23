@@ -88,6 +88,14 @@ module Strings
         stratum
       ], "um")
 
+      @category_ie_ies = %w[
+        beastie
+        beanie
+        bowtie
+        bourgeoisie
+        brownie
+      ]
+
       @category_us_uses = %w[
         apparatus
         cantus
@@ -149,10 +157,13 @@ module Strings
         "applewood",
         "arthur",
         "athletics",
+        "bakeware",
         "barium",
+        "barracks",
         "barbeque",
         "bellows",
         "beyond",
+        "bifocals",
         "bison",
         "bloodflow",
         "bowling",
@@ -243,11 +254,13 @@ module Strings
         [/\A(.+ceps)$/i, "\\1"],
         [/\A(.*(l|m))ice$/i, "\\1ouse"],
         [/\A(zombie)s$/i, "\\1"],
+        [/\A(.*lanche)s$/, "\\1"],
+        [/\A(.*bronchitis)es$/i, "\\1"],
+        # ends in -ies
+        [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         # ends in -ses
-        [/\A(.*(apse|abuse|anise))s$/, "\\1"],
+        [/\A(.*(apse|abuse|anise|case))s$/, "\\1"],
         [/\A(.*alias)es$/, "\\1"],
-        # ends in -hes
-        [/\A(.+nche)s$/, "\\1"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})s$/, "\\1"],
         [/\A(.*m)en$/i, "\\1an"],
@@ -261,7 +274,8 @@ module Strings
       @singular_rules = Set[
         [/\A(.+[aeiou])os$/, "\\1o"],
         # ends in -uses
-        [/\A(.+laus)es$/i, "\\1e"],
+        [/\A(.+[i]as)es$/i, "\\1"],
+        [/\A(.+(aus|ous))es$/i, "\\1e"],
         [/\A(.+us)es$/i, "\\1"],
         # ends in -ices, -a, -ae
         [/\A(#{@category_ex_ices.join("|")})ices$/i, "\\1ex"],
@@ -276,7 +290,9 @@ module Strings
         # ends in -ys
         [/\A(.+[aeiou]y)s$/i, "\\1"],
         # ends in -ches, -shes, -sses, -zes, -xes
+        [/\A(.+uzz)es$/i, "\\1"],
         [/\A(.+)zzes$/i, "\\1z"],
+        [/\A(.+[en]ze)s$/i, "\\1"],
         [/\A(.+orse)s$/i, "\\1"],
         [/\A(.+[n]s)es$/i, "\\1e"],
         [/\A(.+[^ns]s)es$/i, "\\1is"],
@@ -309,7 +325,8 @@ module Strings
         [/\A(.*(append|matr))ix$/i, "\\1ices"],
         [/\A(.*trilby)$/i, "\\1s"],
         [/\A(.*loo)ey$/i, "\\1ies"],
-        [/\A(.*[^b]?(l|m))ouse$/i, "\\1ice"],
+        [/\A(.*blouse)$/i, "\\1s"],
+        [/\A(.*(l|m))ouse$/i, "\\1ice"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})$/, "\\1s"],
         [/\A(.*m)an$/i, "\\1en"],
@@ -319,7 +336,7 @@ module Strings
         [/\A(.*gas)$/i, "\\1ses"],
         # ends in -f
         [/\A(.*(tur|thie|loa|hoo))f$/i, "\\1ves"],
-        [/\A(.*(beef|roof|belief|chef|chief))$/i, "\\1s"],
+        [/\A(.*(behalf|beef|roof|belief|chef|chief))$/i, "\\1s"],
         # ends in -s
         [/\A(.+[a]s)$/, "\\1es"]
       ]
@@ -352,6 +369,7 @@ module Strings
         [/\A((.+)[aeiou]o)$/i, "\\1s"],
         [/\A(.+o)$/i, "\\1es"],
         # default
+        [/\A(.+itis)$/i, "\\1es"],
         [/\A(.+)s$/i, "\\1s"],
         [/\A(.+)$/i, "\\1s"]
       ]
