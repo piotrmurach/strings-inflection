@@ -18,7 +18,14 @@ module Strings
         alto
         archipelago
         armadillo
+        auto
         basso
+        bongo
+        banjo
+        bolero
+        burrito
+        burro
+        bronco
         canto
         commando
         contralto
@@ -57,9 +64,15 @@ module Strings
         vortex
       ], "ex")
 
+      @category_on_a = to_stem(%w[
+        criterion
+        phenomenon
+      ], "on")
+
       @category_a_ae = %w[
         alumna
         alga
+        antenna
         vertebra
       ]
 
@@ -125,9 +138,24 @@ module Strings
       ], "us")
 
       @uncountable = Set[
+        "acoustics",
+        "adrenalin",
         "aircraft",
+        "aluminium",
+        "aluminum",
+        "analytics",
+        "anesthesiology",
+        "anime",
+        "applewood",
+        "arthur",
+        "athletics",
+        "barium",
+        "barbeque",
         "bellows",
+        "beyond",
         "bison",
+        "bloodflow",
+        "bowling",
         "bream",
         "breeches",
         "britches",
@@ -215,6 +243,11 @@ module Strings
         [/\A(.+ceps)$/i, "\\1"],
         [/\A(.*(l|m))ice$/i, "\\1ouse"],
         [/\A(zombie)s$/i, "\\1"],
+        # ends in -ses
+        [/\A(.*(apse|abuse|anise))s$/, "\\1"],
+        [/\A(.*alias)es$/, "\\1"],
+        # ends in -hes
+        [/\A(.+nche)s$/, "\\1"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})s$/, "\\1"],
         [/\A(.*m)en$/i, "\\1an"],
@@ -228,6 +261,7 @@ module Strings
       @singular_rules = Set[
         [/\A(.+[aeiou])os$/, "\\1o"],
         # ends in -uses
+        [/\A(.+laus)es$/i, "\\1e"],
         [/\A(.+us)es$/i, "\\1"],
         # ends in -ices, -a, -ae
         [/\A(#{@category_ex_ices.join("|")})ices$/i, "\\1ex"],
@@ -244,7 +278,7 @@ module Strings
         # ends in -ches, -shes, -sses, -zes, -xes
         [/\A(.+)zzes$/i, "\\1z"],
         [/\A(.+orse)s$/i, "\\1"],
-        [/\A(.+ns)es$/i, "\\1e"],
+        [/\A(.+[n]s)es$/i, "\\1e"],
         [/\A(.+[^ns]s)es$/i, "\\1is"],
         [/\A(.+(ss|sh|ch|x|z))es$/i, "\\1"],
         # ends in -ies
@@ -275,7 +309,7 @@ module Strings
         [/\A(.*(append|matr))ix$/i, "\\1ices"],
         [/\A(.*trilby)$/i, "\\1s"],
         [/\A(.*loo)ey$/i, "\\1ies"],
-        [/\A(.*(l|m))ouse$/i, "\\1ice"],
+        [/\A(.*[^b]?(l|m))ouse$/i, "\\1ice"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})$/, "\\1s"],
         [/\A(.*m)an$/i, "\\1en"],
@@ -284,8 +318,10 @@ module Strings
         # ends in -ch, -sh, -ss, -z, -x
         [/\A(.*gas)$/i, "\\1ses"],
         # ends in -f
-        [/\A(.*(tur|thie|loa|hoo|bee))f$/i, "\\1ves"],
-        [/\A(.*(roof|belief|chef|chief))$/i, "\\1s"],
+        [/\A(.*(tur|thie|loa|hoo))f$/i, "\\1ves"],
+        [/\A(.*(beef|roof|belief|chef|chief))$/i, "\\1s"],
+        # ends in -s
+        [/\A(.+[a]s)$/, "\\1es"]
       ]
 
       @plural_rules = Set[
@@ -298,7 +334,7 @@ module Strings
         # ends in -ex, -um, -on, -a
         [/\A(#{@category_ex_ices.join("|")})ex$/i, "\\1ices"],
         [/\A(#{@category_um_a.join("|")})um$/i, "\\1a"],
-        [/\A(.*)on$/i, "\\1a"],
+        [/\A(#{@category_on_a.join("|")})on$/i, "\\1a"],
         [/(#{@category_a_ae.join("|")})$/i, "\\1e"],
         # ends in -ch, -sh, -ss, -z, -x
         [/\A(.+[ie]z)$/i, "\\1zes"],
