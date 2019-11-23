@@ -38,7 +38,16 @@ Or install it yourself as:
 
     $ gem install strings-inflect
 
-## Usage
+## Contents
+
+* [1. Usage](#1-usage)
+* [2. API](#2-api)
+  * [2.1 inflect](#21-inflect)
+  * [2.2 singularize](#22-singularize)
+  * [2.3 pluralize](#23-pluralize)
+  * [2.4 join_words](#24-join-words)
+
+## 1. Usage
 
 **Strings::Inflect** provides `pluralize` to convert a noun to plural form:
 
@@ -59,6 +68,44 @@ There is also more generic `inflect` method that accepts a noun and count:
 ```ruby
 Strings::Inflect.inflect("error", 3)
 # => "errors"
+```
+
+## 2. API
+
+### 2.1 inflect
+
+### 2.2 singularize
+
+### 2.3 pluralize
+
+### 2.4 join_words
+
+To join an array of words into a single sentence use `join_words` method.
+
+For example, to join three words:
+
+```ruby
+Strings::Inflect.join_words("one", "two", "three")
+# => "one, two, and three"
+```
+
+To join words without Oxford style comma use `:final_separator`:
+
+```ruby
+Strings::Inflect.join_words("one", "two", "three", final_separator: "")
+# => "one, two and three"
+```
+
+To join words with custom separators:
+
+```ruby
+options = {
+  separator: " or ",
+  final_separator: " or at least ",
+  conjunctive: ""
+}
+Strings::Inflect.join_words("one", "two", "three", **options)
+# => "one or two or at least three"
 ```
 
 ## Development
