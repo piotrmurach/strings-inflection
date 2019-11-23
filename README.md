@@ -40,6 +40,26 @@ Or install it yourself as:
 
 ## Usage
 
+**Strings::Inflect** provides `pluralize` to convert a noun to plural form:
+
+```ruby
+Strings::Inflect.pluralize("error")
+# => "errors"
+```
+
+To inflect a noun to a singular form use `singularize` method:
+
+```ruby
+Strings::Inflect.singularize("errors")
+# => "error"
+```
+
+There is also more generic `inflect` method that accepts a noun and count:
+
+```ruby
+Strings::Inflect.inflect("error", 3)
+# => "errors"
+```
 
 ## Development
 
