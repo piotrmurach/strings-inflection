@@ -114,5 +114,41 @@ module Strings
       string == pluralize(string)
     end
     module_function :plural?
+
+    WHITESPACE_REGEX = /(\s)\s+/.freeze
+
+    # Join a list of words into a single sentence
+    #
+    # @example
+    #   Strings::Inflect.join_words("one", "two", "three")
+    #   # => "one, two and three"
+    #
+    # @param [Array[String]] words
+    #   the words to join
+    # @param [String] separator
+    #   the character to use to join words, defaults to `,`
+    # @param [String] final_separator
+    #   the separator used before joining the last word
+    # @param [String] conjunctive
+    #   the word used for combining the last word with the rest
+    #
+    # @return [String]
+    #
+    # @api public
+    def join_words(*words, separator: ", ", conjunctive: "and", final_separator: nil)
+      oxford_comma = final_separator || separator
+
+      case words.length
+      when 0
+        ""
+      when 1, 2
+        words.join(" #{conjunctive} ").gsub(WHITESPACE_REGEX, "\\1")
+      else
+        ((words[0...-1]).join("#{separator}") +
+         "#{oxford_comma} #{conjunctive} " + words[-1])
+          .gsub(WHITESPACE_REGEX, "\\1").gsub(/\s*(,)/, "\\1")
+      end
+    end
+    module_function :join_words
   end # Inflect
 end # Strings
