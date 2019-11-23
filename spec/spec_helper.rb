@@ -18,7 +18,34 @@ end
 require "bundler/setup"
 require "strings/inflect"
 
+module Helpers
+  def gem_root
+    ::File.join(File.dirname(__FILE__), "..")
+  end
+
+  def dir_path(*args)
+    path = ::File.join(gem_root, *args)
+    ::FileUtils.mkdir_p(path) unless ::File.exist?(path)
+    ::File.realpath(path)
+  end
+
+  def fixtures_path(*args)
+    ::File.join(dir_path('spec', 'fixtures'), *args)
+  end
+
+  def inflections_example(*args)
+    file = fixtures_path(*args)
+    ::File.foreach(file) do |line|
+      if !line.tr(" ", "").chomp.empty? && !line.start_with?("#")
+        yield(*line.split.map(&:chomp))
+      end
+    end
+  end
+end
+
 RSpec.configure do |config|
+  config.extend(Helpers)
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 
