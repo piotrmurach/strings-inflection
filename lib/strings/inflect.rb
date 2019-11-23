@@ -2,11 +2,16 @@
 
 require "set"
 
-require_relative "inflect/nouns"
+require_relative "inflect/noun"
 require_relative "inflect/version"
 
 module Strings
   module Inflect
+    def Noun(word)
+      Noun[word]
+    end
+    module_function :Noun
+
     # Check if word is uncountable
     #
     # @param [String] word
@@ -16,7 +21,7 @@ module Strings
     #
     # @api private
     def uncountable?(word)
-      Nouns.uncountable.include?(word)
+      Noun[word].uncountable?
     end
     module_function :uncountable?
 
@@ -52,17 +57,11 @@ module Strings
     #
     # @api public
     def singularize(word)
-      return word if word.to_s.empty? || uncountable?(word)
-
-      regex, replacement = Nouns.singulars.find { |rule| !!(word =~ rule[0]) }
-
-      return word if regex.nil?
-
-      word.sub(regex, replacement)
+      Noun[word].singular
     end
     module_function :singularize
 
-    # Inflect singular noun into plural
+    # Inflect a word to its plural form
     #
     # @example
     #   Strings::Inflect.pluralize("error")
@@ -73,13 +72,7 @@ module Strings
     #
     # @api public
     def pluralize(word)
-      return word if word.to_s.empty? || uncountable?(word)
-
-      regex, replacement = Nouns.plurals.find { |rule| !!(word =~ rule[0]) }
-
-      return word if regex.nil?
-
-      word.sub(regex, replacement)
+      Noun[word].plural
     end
     module_function :pluralize
 
@@ -92,10 +85,8 @@ module Strings
     # @return [Boolean]
     #
     # @api public
-    def singular?(string)
-      return false if string.to_s.empty?
-
-      string == singularize(string)
+    def singular?(word)
+      Noun[word].singular?
     end
     module_function :singular?
 
@@ -108,10 +99,8 @@ module Strings
     # @return [Boolean]
     #
     # @api public
-    def plural?(string)
-      return false if string.to_s.empty?
-
-      string == pluralize(string)
+    def plural?(word)
+      Noun[word].plural?
     end
     module_function :plural?
 
