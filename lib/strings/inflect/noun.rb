@@ -56,7 +56,7 @@ module Strings
       # Inflect a word to its plural form
       #
       # @example
-      #   Strings::Inflect.pluralize("error")
+      #   Strings::Inflect::Noun.new("error").plural
       #   # => "errors"
       #
       # @param [String] word
