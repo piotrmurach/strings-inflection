@@ -12,4 +12,10 @@ RSpec.describe Strings::Inflect, "#pluralize" do
       expect(Strings::Inflect.pluralize(singular)).to eq(plural)
     end
   end
+
+  inflections_example("verbs") do |singular, plural|
+    it "pluralizes #{singular} -> #{plural}" do
+      expect(Strings::Inflect::Verb(singular).plural).to eq(plural)
+    end
+  end
 end

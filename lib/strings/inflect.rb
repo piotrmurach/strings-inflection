@@ -3,6 +3,7 @@
 require "set"
 
 require_relative "inflect/noun"
+require_relative "inflect/verb"
 require_relative "inflect/version"
 
 module Strings
@@ -11,6 +12,11 @@ module Strings
       Noun[word]
     end
     module_function :Noun
+
+    def Verb(word)
+      Verb[word]
+    end
+    module_function :Verb
 
     # Check if word is uncountable
     #
@@ -37,11 +43,11 @@ module Strings
     #   the count of items
     #
     # @api public
-    def inflect(word, count)
+    def inflect(word, count, term: :noun)
       if count == 1
-        singularize(word)
+        singularize(word, term: term)
       else
-        pluralize(word)
+        pluralize(word, term: term)
       end
     end
     module_function :inflect
@@ -56,8 +62,13 @@ module Strings
     #   the noun to inflect to singular form
     #
     # @api public
-    def singularize(word)
-      Noun[word].singular
+    def singularize(word, term: :noun)
+      case term
+      when :noun
+        Noun[word].singular
+      when :verb
+        Verb[word].singular
+      end
     end
     module_function :singularize
 
@@ -71,8 +82,13 @@ module Strings
     #   noun to inflect to plural form
     #
     # @api public
-    def pluralize(word)
-      Noun[word].plural
+    def pluralize(word, term: :noun)
+      case term
+      when :noun
+        Noun[word].plural
+      when :verb
+        Verb[word].plural
+      end
     end
     module_function :pluralize
 

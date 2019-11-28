@@ -16,4 +16,12 @@ RSpec.describe Strings::Inflect, "#inflect" do
   it "leaves singular word uninflected" do
     expect(Strings::Inflect.inflect("door", 1)).to eq("door")
   end
+
+  it "inflects singular verb" do
+    expect(Strings::Inflect.inflect("tries", 2, term: :verb)).to eq("try")
+  end
+
+  it "inflects plural verb" do
+    expect(Strings::Inflect.inflect("try", 1, term: :verb)).to eq("tries")
+  end
 end
