@@ -27,7 +27,11 @@ module Strings
         burro
         bronco
         canto
+        cargo
+        casino
+        cello
         commando
+        congo
         contralto
         crescendo
         ditto
@@ -89,6 +93,7 @@ module Strings
       ], "um")
 
       @category_ie_ies = %w[
+        calorie
         beastie
         beanie
         bowtie
@@ -170,10 +175,34 @@ module Strings
         "bream",
         "breeches",
         "britches",
+        "cappuccino",
         "carp",
+        "cash",
+        "catsup",
+        "cattle",
+        "celeriac",
+        "celsius",
         "cod",
+        "coevolution",
+        "collagen",
+        "colorlessness",
+        "commonsense",
+        "cooking",
+        "cooperation",
+        "coordination",
+        "copying",
+        "corporatism",
+        "corps",
+        "counterterrorism",
+        "crystallography",
+        "crayfish",
         "clothes",
         "chassis",
+        "chaos",
+        "chem",
+        "chess",
+        "chino",
+        "cilantro",
         "corps",
         "contretemps",
         "clippers",
@@ -240,13 +269,13 @@ module Strings
         [/\A(.*iri)[ds]es$/, "\\1s"],
         [/\A(.*ox)en$/i, "\\1"],
         [/\A(.*child)ren$/i, "\\1"],
-        [/\A(pe)ople$/i, "\\1rson"],
+        [/\A(.*pe)ople$/i, "\\1rson"],
         [/\A(.*g)eese$/i, "\\1oose"],
-        [/\A(.*mongoose)s$/i, "\\1"],
+        [/\A(.*(mong|cab)oose)s$/i, "\\1"],
         [/\A(.*t)eeth$/i, "\\1ooth"],
         [/\A(.*f)eet$/i, "\\1oot"],
         [/\A(.*geni)(es|i)$/i, "\\1e"],
-        [/\A(.*ga)sses$/i, "\\1s"],
+        [/\A(.*(ga|canva))sses$/i, "\\1s"],
         [/\A(.*di)ce$/i, "\\1e"],
         [/\A(.*pen)ce$/i, "\\1ny"],
         [/\A(.*(append|matr))ices$/i, "\\1ix"],
@@ -255,7 +284,15 @@ module Strings
         [/\A(.*(l|m))ice$/i, "\\1ouse"],
         [/\A(zombie)s$/i, "\\1"],
         [/\A(.*lanche)s$/, "\\1"],
-        [/\A(.*bronchitis)es$/i, "\\1"],
+        [/\A(.*canoe)s$/, "\\1"],
+        [/\A(.*[aum]ise)s$/, "\\1"],
+        [/\A(.*[u]rse)s$/, "\\1"],
+        [/\A(.*(cheese|close|cookie))s$/, "\\1"],
+        [/\A(.*(creche))s$/, "\\1"],
+        [/\A(.*itis)es$/i, "\\1"],
+        [/\A(.*alis)es$/i, "\\1"],
+        [/\A(.*cirr)i$/i, "\\1us"],
+        [/\A(.*nase)s$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         # ends in -ses
@@ -325,7 +362,10 @@ module Strings
         [/\A(.*(append|matr))ix$/i, "\\1ices"],
         [/\A(.*trilby)$/i, "\\1s"],
         [/\A(.*loo)ey$/i, "\\1ies"],
+        [/\A(.*chrysalis)$/i, "\\1es"],
+        [/\A(.*cirr)us$/i, "\\1i"],
         [/\A(.*blouse)$/i, "\\1s"],
+        [/\A(.*canvas)$/i, "\\1ses"],
         [/\A(.*(l|m))ouse$/i, "\\1ice"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})$/, "\\1s"],
