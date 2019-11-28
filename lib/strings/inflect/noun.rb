@@ -30,7 +30,7 @@ module Strings
       #
       # @api private
       def uncountable?
-        Nouns.uncountable.include?(word)
+        Nouns.uncountable.include?(word.downcase)
       end
 
       # Inflect a word to its singular form
