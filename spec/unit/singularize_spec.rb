@@ -7,8 +7,8 @@ RSpec.describe Strings::Inflect, "#singularize" do
     end
   end
 
-  inflections_example("nounlist") do |singular, plural|
-    it "singularizes #{plural} -> #{singular}" do
+  it "singularizes nounlist" do
+    inflections_example("nounlist") do |singular, plural|
       expect(Strings::Inflect.singularize(plural)).to eq(singular)
     end
   end
