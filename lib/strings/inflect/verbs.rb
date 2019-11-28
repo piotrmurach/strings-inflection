@@ -4,7 +4,7 @@ module Strings
   module Inflect
     module Verbs
 
-      @uninflected = Set[
+      @uninflected = [
         "can",
         "may",
         "must",
@@ -13,13 +13,13 @@ module Strings
         "will"
       ]
 
-      @singular_irregular = Set[
+      @singular_irregular = [
         [/\Aare$/, "is"],
         [/\Awere$/, "was"],
         [/\A(ha)ve$/, "\\1s"],
       ]
 
-      @singular_rules = Set[
+      @singular_rules = [
         [/(.*[cs]h)$/i, "\\1es"],
         [/(.*[sx])$/i, "\\1es"],
         [/(.*oe)$/i, "\\1s"],
@@ -34,14 +34,14 @@ module Strings
 
       @singulars = @singular_irregular + @singular_rules
 
-      @plural_irregular = Set[
+      @plural_irregular = [
         [/\A(am|is)$/, "are"],
         [/\Awas$/, "were"],
         [/\Ahas$/, "have"],
         [/\A(go|do)es$/, "\\1"]
       ]
 
-      @plural_rules = Set[
+      @plural_rules = [
         [/(.*[aeiou]y)s$/i, "\\1"],
         [/(.*[cs]h)es$/i, "\\1"],
         [/(.*[sx])es$/i, "\\1"],
@@ -57,7 +57,7 @@ module Strings
 
       # A set of uninflected verbs
       #
-      # @return [Set[String]]
+      # @return [Array[String]]
       #
       # @api private
       def uninflected

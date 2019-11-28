@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
-
 require_relative "inflect/noun"
 require_relative "inflect/verb"
 require_relative "inflect/version"

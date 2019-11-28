@@ -263,7 +263,7 @@ module Strings
         "wildebeest"
       ]
 
-      @singular_irregular = Set[
+      @singular_irregular = [
         [/\A(.*ax)es$/i, "\\1is"],
         [/\A(.*avocado)s$/i, "\\1"],
         [/\A(.*iri)[ds]es$/, "\\1s"],
@@ -308,7 +308,7 @@ module Strings
         [/\A(.*(roof|belief|chef|chief))s$/i, "\\1"],
       ]
 
-      @singular_rules = Set[
+      @singular_rules = [
         [/\A(.+[aeiou])os$/, "\\1o"],
         # ends in -uses
         [/\A(.+[i]as)es$/i, "\\1"],
@@ -347,7 +347,7 @@ module Strings
 
       @singulars = @singular_irregular + @singular_rules
 
-      @plural_irregular = Set[
+      @plural_irregular = [
         [/\A(.*avocado)$/i, "\\1s"],
         [/\A(.*child)$/i, "\\1ren"],
         [/\A(.*pe)rson$/i, "\\1ople"],
@@ -381,7 +381,7 @@ module Strings
         [/\A(.+[a]s)$/, "\\1es"]
       ]
 
-      @plural_rules = Set[
+      @plural_rules = [
         # ends in -is
         [/([csx])is$/i, "\\1es"],
         [/(ri)s$/i, "\\1ses"],
@@ -418,7 +418,7 @@ module Strings
 
       # A set of uncoutanble nouns
       #
-      # @return [Set[String]]
+      # @return [Array[String]]
       #
       # @api private
       def uncountable
