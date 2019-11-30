@@ -31,7 +31,7 @@ module Strings
       def singular
         return word if word.to_s.empty? || uninflected?
 
-        find_match(Verbs.singulars)
+        find_match(Verbs.singulars) || word
       end
 
       # Inflect a word to its plural form
@@ -47,7 +47,7 @@ module Strings
       def plural
         return word if word.to_s.empty? || uninflected?
 
-        find_match(Verbs.plurals)
+        find_match(Verbs.plurals) || word
       end
     end # Verb
   end # Inflect

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "inflect/configuration"
 require_relative "inflect/noun"
 require_relative "inflect/parser"
 require_relative "inflect/verb"
@@ -7,15 +8,58 @@ require_relative "inflect/version"
 
 module Strings
   module Inflect
+    # Error raised by this inflector
+    class Error < StandardError; end
+
+    # Create a noun object
+    #
+    # @api public
     def Noun(word)
       Noun[word]
     end
     module_function :Noun
 
+    # Create a verb object
+    #
+    # @api public
     def Verb(word)
       Verb[word]
     end
     module_function :Verb
+
+    # A configuration object
+    #
+    # @api public
+    def configuration
+      @configuration ||= Configuration.new
+    end
+    module_function :configuration
+
+    # Reset configuration and remove loaded inflections
+    #
+    # @api public
+    def reset(scope = :all)
+      configuration.reset(scope)
+    end
+    module_function :reset
+
+    # Configure custom inflections
+    #
+    # @example
+    #   configure do |config|
+    #     config.plural "index", "indexes"
+    #     config.singular "axes", "ax"
+    #   end
+    #
+    # @api public
+    def configure
+      if block_given?
+        yield configuration
+      else
+        configuration
+      end
+    end
+    module_function :configure
 
     # Check if word is uncountable
     #

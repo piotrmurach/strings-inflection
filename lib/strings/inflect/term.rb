@@ -26,7 +26,7 @@ module Strings
       def find_match(rules)
         regex, replacement = rules.find { |rule| !!(word =~ rule[0]) }
 
-        return word if regex.nil?
+        return if regex.nil?
 
         word.sub(regex, replacement)
       end

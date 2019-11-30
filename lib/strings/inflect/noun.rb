@@ -15,7 +15,8 @@ module Strings
       #
       # @api private
       def uncountable?
-        Nouns.uncountable.include?(word.downcase)
+        Inflect.configuration.uncountables[:noun].include?(word.downcase) ||
+          Nouns.uncountable.include?(word.downcase)
       end
 
       # Inflect a word to its singular form
@@ -29,9 +30,12 @@ module Strings
       #
       # @api public
       def singular
+        if (matched = find_match(Inflect.configuration.singulars[:noun]))
+          return matched
+        end
         return word if word.to_s.empty? || uncountable?
 
-        find_match(Nouns.singulars)
+        find_match(Nouns.singulars) || word
       end
 
       # Inflect a word to its plural form
@@ -45,9 +49,12 @@ module Strings
       #
       # @api public
       def plural
+        if (matched = find_match(Inflect.configuration.plurals[:noun]))
+          return matched
+        end
         return word if word.to_s.empty? || uncountable?
 
-        find_match(Nouns.plurals)
+        find_match(Nouns.plurals) || word
       end
 
       # Check if noun is in singular form
