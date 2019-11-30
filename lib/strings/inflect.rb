@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "inflect/noun"
+require_relative "inflect/parser"
 require_relative "inflect/verb"
 require_relative "inflect/version"
 
