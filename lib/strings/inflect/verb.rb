@@ -1,26 +1,11 @@
 # frozen_string_literal: true
 
+require_relative "term"
 require_relative "verbs"
 
 module Strings
   module Inflect
-    class Verb
-      def self.[](word)
-        self.new(word)
-      end
-
-      attr_reader :word
-
-      # Create a new verb
-      #
-      # @param [String] word
-      #   the word to turn into a verb object
-      #
-      # @api public
-      def initialize(word)
-        @word = word.dup
-      end
-
+    class Verb < Term
       # Check if word is uninflected
       #
       # @param [String] word
@@ -46,11 +31,7 @@ module Strings
       def singular
         return word if word.to_s.empty? || uninflected?
 
-        regex, replacement = Verbs.singulars.find { |rule| !!(word =~ rule[0]) }
-
-        return word if regex.nil?
-
-        word.sub(regex, replacement)
+        find_match(Verbs.singulars)
       end
 
       # Inflect a word to its plural form
@@ -66,11 +47,7 @@ module Strings
       def plural
         return word if word.to_s.empty? || uninflected?
 
-        regex, replacement = Verbs.plurals.find { |rule| !!(word =~ rule[0]) }
-
-        return word if regex.nil?
-
-        word.sub(regex, replacement)
+        find_match(Verbs.plurals)
       end
     end # Verb
   end # Inflect

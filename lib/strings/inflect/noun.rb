@@ -1,26 +1,11 @@
 # frozen_string_literal: true
 
+require_relative "term"
 require_relative "nouns"
 
 module Strings
   module Inflect
-    class Noun
-      def self.[](word)
-        self.new(word)
-      end
-
-      attr_reader :word
-
-      # Create a new noun
-      #
-      # @param [String] word
-      #   the word to turn into a noun object
-      #
-      # @api public
-      def initialize(word)
-        @word = word.dup
-      end
-
+    class Noun < Term
       # Check if word is uncountable
       #
       # @param [String] word
@@ -46,11 +31,7 @@ module Strings
       def singular
         return word if word.to_s.empty? || uncountable?
 
-        regex, replacement = Nouns.singulars.find { |rule| !!(word =~ rule[0]) }
-
-        return word if regex.nil?
-
-        word.sub(regex, replacement)
+        find_match(Nouns.singulars)
       end
 
       # Inflect a word to its plural form
@@ -66,11 +47,7 @@ module Strings
       def plural
         return word if word.to_s.empty? || uncountable?
 
-        regex, replacement = Nouns.plurals.find { |rule| !!(word =~ rule[0]) }
-
-        return word if regex.nil?
-
-        word.sub(regex, replacement)
+        find_match(Nouns.plurals)
       end
 
       # Check if noun is in singular form
@@ -101,13 +78,6 @@ module Strings
         return false if word.to_s.empty?
 
         word == plural
-      end
-
-      # A string representation of this word
-      #
-      # @api public
-      def to_s
-        word.to_s
       end
     end # Noun
   end # Inflect
