@@ -11,7 +11,7 @@ Benchmark.ips do |bench|
   end
 
   bench.report("strings-inflect") do
-    Strings::Inflect.pluralize("errors")
+    Strings::Inflect.pluralize("error")
   end
 
   bench.compare!
