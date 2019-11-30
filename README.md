@@ -24,7 +24,7 @@
 
 ## Motivation
 
-Provide a comprehensive inflections for most nouns and verbs. The algorithms that this gem uses is based on the analysis of 6,500 most frequently used nouns and around 6,000 most used verbs in the English language. Because of this you will get correct inflections for most words:
+The goal is to provide a comprehensive inflections for most nouns and verbs. The algorithms that this gem uses are based on the analysis of 6,500 most frequently used nouns and around 6,000 most used verbs in English language. Because of this you will get correct inflections for most words:
 
 ```ruby
 Strings::Inflect.pluralize("cod") # => "cod"
@@ -215,9 +215,45 @@ Strings::Inflect.singularize("sees") # => "sees"
 
 ### 2.3 singular?
 
+To check if a noun or a verb is in a singular form use `singular?`:
+
+```ruby
+Strings::Inflect.singular?("errors") # => false
+Strings::Inflect.singular?("index") # => true
+Strings::Inflect.singular?("try", term: :verb) # => false
+Strings::Inflect.singular?("goes", term: :verb) # => true
+```
+
+You can also convert a word to a noun or verb object:
+
+```ruby
+Strings::Inflect::Noun("errors").singular? # => false
+Strings::Inflect::Noun("index").singular? # => true
+Strings::Inflect::Verb("try").singular? # => false
+Strings::Inflect::Verb("goes").singular? # => true
+```
+
 ### 2.4 pluralize
 
 ### 2.5 plural?
+
+To check if a noun or a verb is in a plural form use `plural?`:
+
+```ruby
+Strings::Inflect.plural?("errors") # => true
+Strings::Inflect.plural?("index") # => false
+Strings::Inflect.plural?("try", term: :verb) # => true
+Strings::Inflect.plural?("goes", term: :verb) # => false
+```
+
+You can also convert a word to a noun or verb object:
+
+```ruby
+Strings::Inflect::Noun("errors").plural? # => true
+Strings::Inflect::Noun("index").plural? # => false
+Strings::Inflect::Verb("try").plural? # => true
+Strings::Inflect::Verb("goes").plural? # => false
+```
 
 ### 2.6 join_words
 
