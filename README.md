@@ -162,6 +162,30 @@ Strings::Inflect.inflect("There {{V:were}} {{#:count}} {{N:match}} found", 1)
 
 ### 2.2 singularize
 
+You can transform a noun or a verb into singular form with `singularize` method. By default it assumes a noun but you can change this with `:term` option:
+
+```ruby
+Strings::Inflect.singularize("errors") # => "error"
+Strings::Inflect.singularize("indices") # => "index"
+Strings::Inflect.singularize("index", term: :verb) # => "indexes"
+Strings::Inflect.singularize("try", term: :verb) # => "tries"
+```
+
+It will handle inflecting irregular nouns or verbs as well:
+
+```ruby
+Strings::Inflect.singularize("feet") # => "foot"
+Strings::Inflect.singularize("are", term: :verb) # => "is"
+Strings::Inflect.singularize("go", term: :verb) # => "goes"
+```
+
+This method won't change inflection if it already is in the correct form:
+
+```ruby
+Strings::Inflect.singularize("index") # => "index"
+Strings::Inflect.singularize("sees") # => "sees"
+```
+
 ### 2.3 pluralize
 
 ### 2.4 join_words
