@@ -39,8 +39,8 @@ module Strings
       #   Strings::Inflect::Verb.new("go").singular
       #   # => "goes"
       #
-      # @param [String] word
-      #   the noun to inflect to singular form
+      # @return [String]
+      #   the verb inflected to singular form
       #
       # @api public
       def singular
@@ -59,8 +59,8 @@ module Strings
       #   Strings::Inflect::Verb.new("goes").plural
       #   # => "go"
       #
-      # @param [String] word
-      #   noun to inflect to plural form
+      # @return [String]
+      #   the verb inflected to plural form
       #
       # @api public
       def plural
