@@ -27,7 +27,7 @@ module Strings
       # @api private
       def self.parse_noun(scanner, count, value)
         if scanner.scan(/\{\{N([^\}]*?):([^\}]+?)\}\}/)
-          option = scanner.captures[0].to_s.tr(" ", "").downcase
+          option = scanner[1].to_s.tr(" ", "").downcase
           if option =~ /[^sp]/i
             raise "Unknown option '#{option}' in {{N:...}} tag"
           end
@@ -36,7 +36,7 @@ module Strings
                        else
                          option == "s" ? :singular : :plural
                        end
-          noun = Noun[scanner.captures[1].to_s.tr(" ", "")]
+          noun = Noun[scanner[2].to_s.tr(" ", "")]
           value << noun.public_send(inflection)
         end
       end
@@ -44,12 +44,12 @@ module Strings
       # @api private
       def self.parse_verb(scanner, count, value)
         if scanner.scan(/\{\{V([^\}]*?):([^\}]+?)\}\}/)
-          option = scanner.captures[0].to_s.tr(" ", "").downcase
+          option = scanner[1].to_s.tr(" ", "").downcase
           if !option.empty?
             raise "Unknown option '#{option}' in {{V:...}} tag"
           end
           inflection = count == 1 ? :singular : :plural
-          verb = Verb[scanner.captures[1].to_s.tr(" ", "")]
+          verb = Verb[scanner[2].to_s.tr(" ", "")]
           value << verb.public_send(inflection)
         end
       end
@@ -57,7 +57,7 @@ module Strings
       # @api private
       def self.parse_count(scanner, count, value)
         if scanner.scan(/\{\{#([^\}]*?):([^\}]+?)\}\}/)
-          option = scanner.captures[0].to_s.tr(" ", "").downcase
+          option = scanner[1].to_s.tr(" ", "").downcase
           if option =~ /[^f]/
             raise "Unknown option '#{option}' in {{#:...}} tag"
           end
