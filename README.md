@@ -43,6 +43,7 @@ Or install it yourself as:
 * [1. Usage](#1-usage)
 * [2. API](#2-api)
   * [2.1 inflect](#21-inflect)
+    * [2.1.1 template](#211-template)
   * [2.2 singularize](#22-singularize)
   * [2.3 pluralize](#23-pluralize)
   * [2.4 join_words](#24-join-words)
@@ -54,6 +55,13 @@ Or install it yourself as:
 ```ruby
 Strings::Inflect.pluralize("error")
 # => "errors"
+```
+
+```ruby
+Strings::Inflect::Noun["error"].plural
+# => "errors"
+Strings::Inflect::Verb["is"].plural
+# => "are"
 ```
 
 To inflect a noun to a singular form use `singularize` method:
@@ -73,6 +81,84 @@ Strings::Inflect.inflect("error", 3)
 ## 2. API
 
 ### 2.1 inflect
+
+In the most common case, to change a noun's inflection use `inflect` method with the word and a count. By default `inflect` assumes a noun.
+
+For example, to inflect the noun `error` to its plural form do:
+
+```ruby
+Strings::Inflect.inflect("error", 2) # => "errors"
+```
+
+And to inflect a verb, use the `:term` option:
+
+```ruby
+Strings::Inflect.inflect("tries", 2, term: :verb) # => "try"
+```
+
+For more complex cases when you want to inflect parts of a sentence, the `inflect` provides tags in a template.
+
+For example, you can inflect a noun and a verb to display information based on the count:
+
+```ruby
+Strings::Inflect.inflect("{{#:count}} {{N:error}} {{V:was}} found", 2)
+# => "2 errors were found"
+```
+
+#### 2.1.1 template
+
+The template inflects any content inside mustache-like braces `{{...}}`. The general form of content inside tag is `{{Xmod:word}}` where:
+
+* `X` informs a grammatical function to apply to word out of `N` or `V` and `#`.
+* `mod` apply zero or more modifiers to word transformation.
+* `word` represents the string to inflect.
+
+The available tags are:
+
+`{{#: count }}`
+
+The first type of tag is the count tag. By default, this tag will display the count inside the evaluated string.
+
+```ruby
+String::Inflect.inflect("{{#:count}} found", 2)
+# => "2 found"
+```
+
+There is an `f` option that will provide a fuzzy estimation of the count:
+
+```ruby
+String::Inflect.inflect("{{#f:count}}", 0) # => "no"
+String::Inflect.inflect("{{#f:count}}", 1) # => "one"
+String::Inflect.inflect("{{#f:count}}", 2) # => "a couple of"
+String::Inflect.inflect("{{#f:count}}", 3) # => "a few"
+String::Inflect.inflect("{{#f:count}}", 6) # => "several"
+String::Inflect.inflect("{{#f:count}}", 12) # => "many"
+```
+
+`{{N: word }}`
+
+This tag inflects a noun into a singular or plural form based on the provided count.
+
+```ruby
+Strings::Inflect.inflect("{{#:count}} {{N:error}} found", 3)
+# => "3 errors found"
+```
+
+You can supply `s` or `p` options to always force a noun to be singular or plural form.
+
+```ruby
+Strings::Inflect.inflect("{{#:count}} {{Ns:error}} found", 3)
+# => "3 error found"
+```
+
+`{{V: word }}`
+
+This tag inflects a verb into appropriate form based on the provided count.
+
+```ruby
+Strings::Inflect.inflect("There {{V:were}} {{#:count}} {{N:match}} found", 1)
+# => "There was 1 match found"
+```
 
 ### 2.2 singularize
 
