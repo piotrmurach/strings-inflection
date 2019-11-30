@@ -18,9 +18,20 @@
 [coverage]: https://coveralls.io/github/piotrmurach/strings-inflect?branch=master
 [inchpages]: http://inch-ci.org/github/piotrmurach/strings-inflect
 
-> Convert between singular and plural forms of English nouns.
+> Inflects English nouns and verbs.
 
-**Strings::Inflect** provides noun conversions to singular and plural form component for [Strings](https://github.com/piotrmurach/strings).
+**Strings::Inflect** provides English inflections of nouns and verbs component for [Strings](https://github.com/piotrmurach/strings).
+
+## Motivation
+
+Provide a comprehensive inflections for most nouns and verbs. The algorithms that this gem uses is based on the analysis of 6,500 most frequently used nouns and around 6,000 most used verbs in the English language. Because of this you will get correct inflections for most words:
+
+```ruby
+Strings::Inflect.pluralize("cod") # => "cod"
+Strings::Inflect.pluralize("codex") # => "codices"
+Strings::Inflect.pluralize("criterion") # => "criteria"
+Strings::Inflect.pluralize("vertebra") # => "vertebrae"
+```
 
 ## Installation
 
@@ -45,37 +56,53 @@ Or install it yourself as:
   * [2.1 inflect](#21-inflect)
     * [2.1.1 template](#211-template)
   * [2.2 singularize](#22-singularize)
-  * [2.3 pluralize](#23-pluralize)
-  * [2.4 join_words](#24-join-words)
+  * [2.3 singular?](#23-singular)
+  * [2.4 pluralize](#24-pluralize)
+  * [2.5 plural?](#25-plural)
+  * [2.6 join_words](#26-join-words)
+  * [2.7 configure](#27-configure)
 
 ## 1. Usage
 
-**Strings::Inflect** provides `pluralize` to convert a noun to plural form:
-
-```ruby
-Strings::Inflect.pluralize("error")
-# => "errors"
-```
-
-```ruby
-Strings::Inflect::Noun["error"].plural
-# => "errors"
-Strings::Inflect::Verb["is"].plural
-# => "are"
-```
-
-To inflect a noun to a singular form use `singularize` method:
-
-```ruby
-Strings::Inflect.singularize("errors")
-# => "error"
-```
-
-There is also more generic `inflect` method that accepts a noun and count:
+**Strings::Inflect** provides a generic `inflect` method for transforming noun or verb inflections. In the most common case, it assumes that you wish to transform a noun to another form based on count:
 
 ```ruby
 Strings::Inflect.inflect("error", 3)
 # => "errors"
+```
+
+As a shortcut, when you wish to always convert a word to singular form use `singularize` or `pluralize` for the opposite:
+
+```ruby
+Strings::Inflect.singularize("errors") # => "error"
+Strings::Inflect.pluralize("error") # => "errors"
+Strings::Inflect.singularize("try", term: :verb) # => "tries"
+Strings::Inflect.pluralize("tries", term: :verb) # => "try"
+```
+
+Alternatively, you can convert words into a noun or verb object. This way you gain access to `singular`and `plural` methods:
+
+```ruby
+Strings::Inflect::Noun("errors").singular # => "error"
+Strings::Inflect::Noun("error").plural # => "errors"
+Strings::Inflect::Verb("try").singular # => "tries"
+Strings::Inflect::Verb("tries").plural # => "try"
+```
+
+The `inflect` method also accepts a mustache-like template to inflect more complex phrases and sentences:
+
+```ruby
+Strings::Inflect.inflect("{{#:count}} {{N:error}} {{V:was}} found", 3)
+# => "3 errors were found"
+```
+
+To change any inflection rules, you can change them using `configure`:
+
+```ruby
+Strings::Inflect.configure do |config|
+  config.plural "index", "indexes"
+  config.singular "axes", "ax"
+end
 ```
 
 ## 2. API
@@ -186,9 +213,13 @@ Strings::Inflect.singularize("index") # => "index"
 Strings::Inflect.singularize("sees") # => "sees"
 ```
 
-### 2.3 pluralize
+### 2.3 singular?
 
-### 2.4 join_words
+### 2.4 pluralize
+
+### 2.5 plural?
+
+### 2.6 join_words
 
 To join an array of words into a single sentence use `join_words` method.
 
@@ -216,6 +247,14 @@ options = {
 }
 Strings::Inflect.join_words("one", "two", "three", **options)
 # => "one or two or at least three"
+```
+
+### 2.7 configure
+
+```ruby
+Strings::Inflect.configure do |config|
+
+end
 ```
 
 ## Development
