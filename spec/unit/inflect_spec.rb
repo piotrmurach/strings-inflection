@@ -24,4 +24,28 @@ RSpec.describe Strings::Inflect, "#inflect" do
   it "inflects plural verb" do
     expect(Strings::Inflect.inflect("try", 1, term: :verb)).to eq("tries")
   end
+
+  it "uses template vars" do
+    template = "{{#:count}} {{N:error}} {{V:was}} found"
+
+    expect(Strings::Inflect.inflect(template, 2)).to eq("2 errors were found")
+  end
+
+  it "uses template vars in plural" do
+    template = "{{#:count}} {{N:errors}} {{V:were}} found"
+
+    expect(Strings::Inflect.inflect(template, 1)).to eq("1 error was found")
+  end
+
+  it "allows to force template singular form" do
+    template = "{{#:count}} {{Ns:error}} {{V:were}} found"
+
+    expect(Strings::Inflect.inflect(template, 2)).to eq("2 error were found")
+  end
+
+  it "changes template count to fuzzy amount " do
+    template = "{{#f:count}} {{N:error}} {{V:was}} found"
+
+    expect(Strings::Inflect.inflect(template, 2)).to eq("a couple of errors were found")
+  end
 end

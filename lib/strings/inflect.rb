@@ -43,11 +43,9 @@ module Strings
     #
     # @api public
     def inflect(word, count, term: :noun)
-      if count == 1
-        singularize(word, term: term)
-      else
-        pluralize(word, term: term)
-      end
+      template = !!(word =~ /\{\{([^\}]+)\}\}/)
+
+      Parser.parse(template ? word : "{{#{term.upcase[0]}:#{word}}}", count)
     end
     module_function :inflect
 
@@ -63,9 +61,9 @@ module Strings
     # @api public
     def singularize(word, term: :noun)
       case term
-      when :noun
+      when :noun, :n
         Noun[word].singular
-      when :verb
+      when :verb, :v
         Verb[word].singular
       end
     end
@@ -83,9 +81,9 @@ module Strings
     # @api public
     def pluralize(word, term: :noun)
       case term
-      when :noun
+      when :noun, :n
         Noun[word].plural
-      when :verb
+      when :verb, :v
         Verb[word].plural
       end
     end
