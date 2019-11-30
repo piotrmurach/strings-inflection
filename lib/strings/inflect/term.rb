@@ -23,12 +23,48 @@ module Strings
         freeze
       end
 
+      # Find a matching rule and replace
+      #
+      # @return [nil, String]
+      #  nil or replaced word
+      #
+      # @api private
       def find_match(rules)
         regex, replacement = rules.find { |rule| !!(word =~ rule[0]) }
 
         return if regex.nil?
 
         word.sub(regex, replacement)
+      end
+
+      # Check if noun is in singular form
+      #
+      # @example
+      #   Strings::Inflect::Noun.new("error").singular?
+      #   # => true
+      #
+      # @return [Boolean]
+      #
+      # @api public
+      def singular?
+        return false if word.to_s.empty?
+
+        word.downcase == singular
+      end
+
+      # Check if noun is in plural form
+      #
+      # @example
+      #   Strings::Inflect::Noun.new("errors").plural?
+      #   # => true
+      #
+      # @return [Boolean]
+      #
+      # @api public
+      def plural?
+        return false if word.to_s.empty?
+
+        word.downcase == plural
       end
 
       # A string representation of this term

@@ -142,8 +142,15 @@ module Strings
     # @return [Boolean]
     #
     # @api public
-    def singular?(word)
-      Noun[word].singular?
+    def singular?(word, term: :noun)
+      case term.to_sym
+      when :noun, :n
+        Noun[word].singular?
+      when :verb, :v
+        Verb[word].singular?
+      else
+        raise Error, "Unknown option '#{term}' as a term"
+      end
     end
     module_function :singular?
 
@@ -156,8 +163,15 @@ module Strings
     # @return [Boolean]
     #
     # @api public
-    def plural?(word)
-      Noun[word].plural?
+    def plural?(word, term: :noun)
+      case term.to_sym
+      when :noun, :n
+        Noun[word].plural?
+      when :verb, :v
+        Verb[word].plural?
+      else
+        raise Error, "Unknown option '#{term}' as a term"
+      end
     end
     module_function :plural?
 

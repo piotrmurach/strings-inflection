@@ -17,6 +17,7 @@ module Strings
         [/\Aare$/, "is"],
         [/\Awere$/, "was"],
         [/\A(ha)ve$/, "\\1s"],
+        [/(.*go|do)$/, "\\1es"],
       ]
 
       @singular_rules = [
@@ -39,7 +40,7 @@ module Strings
         [/\A(am|is)$/, "are"],
         [/\Awas$/, "were"],
         [/\Ahas$/, "have"],
-        [/\A(go|do)es$/, "\\1"]
+        [/(.*go|do)es$/, "\\1"],
       ]
 
       @plural_rules = [
