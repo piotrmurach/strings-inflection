@@ -30,12 +30,10 @@ module Strings
       #
       # @api public
       def singular
-        if (matched = find_match(Inflect.configuration.singulars[:noun]))
-          return matched
-        end
-        return word if word.to_s.empty? || uncountable?
+        return word if word.to_s.empty?
 
-        find_match(Nouns.singulars) || word
+        find_match(Inflect.configuration.singulars[:noun]) ||
+          (uncountable? && word) || find_match(Nouns.singulars) || word
       end
 
       # Inflect a word to its plural form
@@ -49,12 +47,10 @@ module Strings
       #
       # @api public
       def plural
-        if (matched = find_match(Inflect.configuration.plurals[:noun]))
-          return matched
-        end
-        return word if word.to_s.empty? || uncountable?
+        return word if word.to_s.empty?
 
-        find_match(Nouns.plurals) || word
+        find_match(Inflect.configuration.plurals[:noun]) ||
+          (uncountable? && word) || find_match(Nouns.plurals) || word
       end
     end # Noun
   end # Inflect
