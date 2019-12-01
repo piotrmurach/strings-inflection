@@ -56,36 +56,6 @@ module Strings
 
         find_match(Nouns.plurals) || word
       end
-
-      # Check if noun is in singular form
-      #
-      # @example
-      #   Strings::Inflect::Noun.new("error").singular?
-      #   # => true
-      #
-      # @return [Boolean]
-      #
-      # @api public
-      def singular?
-        return false if word.to_s.empty?
-
-        word == singular
-      end
-
-      # Check if noun is in plural form
-      #
-      # @example
-      #   Strings::Inflect::Noun.new("errors").plural?
-      #   # => true
-      #
-      # @return [Boolean]
-      #
-      # @api public
-      def plural?
-        return false if word.to_s.empty?
-
-        word == plural
-      end
     end # Noun
   end # Inflect
 end # Strings
