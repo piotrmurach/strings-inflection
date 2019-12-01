@@ -11,7 +11,7 @@ RSpec.describe Strings::Inflect do
       Strings::Inflect.pluralize("error")
     }.to perform_slower_than {
       ActiveSupport::Inflector.pluralize("error")
-    }.at_most(1.3).times
+    }.at_most(1.45).times
   end
 
   it "allocates" do
