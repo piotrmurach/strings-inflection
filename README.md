@@ -61,6 +61,7 @@ Or install it yourself as:
   * [2.5 plural?](#25-plural)
   * [2.6 join_words](#26-join-words)
   * [2.7 configure](#27-configure)
+* [3. Extending String class](#3-extending-string-class)
 
 ## 1. Usage
 
@@ -291,6 +292,39 @@ Strings::Inflect.join_words("one", "two", "three", **options)
 Strings::Inflect.configure do |config|
 
 end
+```
+
+## 3. Extending String class
+
+Though it is highly discouraged to pollute core Ruby classes, you can add the required methods to `String` class by using refinements.
+
+For example, if you wish to only extend strings with `inflect` method do:
+
+```ruby
+module MyStringExt
+  refine String do
+    def inflect(*args, **options)
+      Strings::Inflect.inflect(self, *args, **options)
+    end
+  end
+end
+```
+
+Then `inflect` method will be available for any strings where refinement is applied:
+
+```ruby
+using MyStringExt
+
+"error".inflect(2) # => "errors"
+"are".inflect(1, term: :verb) # => "is"
+```
+
+However, if you want to include all the **Strings::Inflect** methods, you can use provided extensions file:
+
+```ruby
+require "strings/inflect/extensions"
+
+using Strings::Inflect::Extensions
 ```
 
 ## Development
