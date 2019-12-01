@@ -59,7 +59,7 @@ Or install it yourself as:
   * [2.3 singular?](#23-singular)
   * [2.4 pluralize](#24-pluralize)
   * [2.5 plural?](#25-plural)
-  * [2.6 join_words](#26-join-words)
+  * [2.6 join_words](#26-join_words)
   * [2.7 configure](#27-configure)
 * [3. Extending String class](#3-extending-string-class)
 
@@ -97,13 +97,20 @@ Strings::Inflect.inflect("{{#:count}} {{N:error}} {{V:was}} found", 3)
 # => "3 errors were found"
 ```
 
-To change any inflection rules, you can change them using `configure`:
+To change any inflection rules, you can change them using `configure`. By default the rules only apply to nouns.
 
 ```ruby
 Strings::Inflect.configure do |config|
   config.plural "index", "indexes"
   config.singular "axes", "ax"
 end
+```
+
+Then the inflection will behave like this:
+
+```ruby
+Strings::Inflect.pluralize("index") # => "indexes"
+Strings::Inflect.singularize("axes") # => "ax"
 ```
 
 ## 2. API
@@ -312,10 +319,45 @@ Strings::Inflect.join_words("one", "two", "three", **options)
 
 ### 2.7 configure
 
+To change any inflection rules use `configure` with a block. By default the rules only apply to nouns.
+
+Inside the block, the configuration exposes few methods:
+
+* `plural` - add plural form inflection rule
+* `singular` - add singular form inflection rule
+* `rule` - add singular and plural form inflection rule
+* `uncountable` - add uncountable nouns
+
+For example, to add new plural and singular rules for the `index` and `ax` nouns do:
+
 ```ruby
 Strings::Inflect.configure do |config|
-
+  config.plural "index", "indexes"
+  config.singular "axes", "ax"
 end
+```
+
+To add a rule for both singular and plural inflections do:
+
+```ruby
+Strings::Inflect.configure do |config|
+  config.rule "ax", "axes"
+end
+```
+
+To add an uncountable noun do:
+
+```ruby
+Strings::Inflect.configure do |config|
+  config.uncountable "east", "earnings"
+end
+```
+
+Now, no inflection will be applied:
+
+```ruby
+Strings::Inflect.inflect("earnings", 1) # => "earnings"
+Strings::Inflect.inflect("east", 2) # => "east"
 ```
 
 ## 3. Extending String class
