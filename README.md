@@ -24,7 +24,7 @@
 
 ## Motivation
 
-The goal is to provide a comprehensive inflections for most nouns and verbs. The algorithms that this gem uses are based on the analysis of 6,500 most frequently used nouns and around 6,000 most used verbs in English language. Because of this you will get correct inflections for most words:
+The goal is to provide a comprehensive way to inflect most nouns and verbs in English. The algorithms that this gem uses are based on the analysis of 6,500 most frequently used nouns and around 6,000 most used verbs in English language. Because of this you will get correct inflections for most words:
 
 ```ruby
 Strings::Inflect.pluralize("cod") # => "cod"
@@ -235,6 +235,30 @@ Strings::Inflect::Verb("goes").singular? # => true
 ```
 
 ### 2.4 pluralize
+
+You can transform a noun or a verb into plural form with `pluralize` method. By default it assumes a noun but you can change this with `:term` option:
+
+```ruby
+Strings::Inflect.pluralize("error") # => "errors"
+Strings::Inflect.pluralize("index") # => "indices"
+Strings::Inflect.pluralize("indexes", term: :verb) # => "index"
+Strings::Inflect.pluralize("tries", term: :verb) # => "try"
+```
+
+It will handle inflecting irregular nouns or verbs as well:
+
+```ruby
+Strings::Inflect.pluralize("foot") # => "feet"
+Strings::Inflect.pluralize("is", term: :verb) # => "are"
+Strings::Inflect.pluralize("goes", term: :verb) # => "go"
+```
+
+This method won't change inflection if it already is in the correct form:
+
+```ruby
+Strings::Inflect.pluralize("indices") # => "indices"
+Strings::Inflect.pluralize("go") # => "go"
+```
 
 ### 2.5 plural?
 
