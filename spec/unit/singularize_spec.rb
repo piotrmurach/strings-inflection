@@ -18,4 +18,10 @@ RSpec.describe Strings::Inflect, "#singularize" do
       expect(Strings::Inflect.singularize(plural, term: :verb)).to eq(singular)
     end
   end
+
+  it "singularizes verblist" do
+    inflections_example("verblist") do |singular, plural|
+      expect(Strings::Inflect.singularize(plural, term: :verb)).to eq(singular)
+    end
+  end
 end
