@@ -38,6 +38,7 @@ module Strings
         dynamo
         embryo
         fiasco
+        fugato
         generalissimo
         ghetto
         guano
@@ -88,17 +89,24 @@ module Strings
         desideratum
         erratum
         extremum
+        formicarium
+        fusarium
         ovum
         stratum
       ], "um")
 
       @category_ie_ies = %w[
         calorie
+        cookie
         beastie
         beanie
         bowtie
         bourgeoisie
         brownie
+        doggie
+        floozie
+        goodie
+        zombie
       ]
 
       @category_us_uses = %w[
@@ -149,6 +157,32 @@ module Strings
         fungus
         nucleus
       ], "us")
+
+      @category_se_ses = %w[
+        apse
+        abuse
+        anise
+        bookcase
+        case
+        cheese
+        close
+        creche
+        database
+        dose
+        doe
+        disease
+        ease
+        enterprise
+        excuse
+        expose
+        glimpse
+        glucose
+        grease
+        high-rise
+        hoe
+        hose
+        pose
+      ]
 
       @uncountable = %w[
         acoustics
@@ -229,13 +263,27 @@ module Strings
         ethics
         equipment
         eyestrain
+        fahrenheit
         fish
         flounder
+        fedelini
+        fibrosis
+        flesh
+        footwear
+        fun
         grass
         gallows
+        genetics
+        garbage
         graffiti
+        gigantism
+        goldfish
+        golf
+        gravitas
+        gymnastics
         hovercraft
         headquarters
+        hydraulics
         herpes
         high-jinks
         homework
@@ -280,6 +328,7 @@ module Strings
       ]
 
       @singular_irregular = [
+        [/\A(.*[lf]ax)es$/i, "\\1"],
         [/\A(.*ax)es$/i, "\\1is"],
         [/\A(.*avocado)s$/i, "\\1"],
         [/\A(.*iri)[ds]es$/, "\\1s"],
@@ -298,32 +347,25 @@ module Strings
         [/\A(.*loo)ies$/i, "\\1ey"],
         [/\A(.+ceps)$/i, "\\1"],
         [/\A(.*(l|m))ice$/i, "\\1ouse"],
-        [/\A(zombie)s$/i, "\\1"],
         [/\A(.*lanche)s$/, "\\1"],
         [/\A(.*canoe)s$/, "\\1"],
         [/\A(.*[aum]ise)s$/, "\\1"],
         [/\A(.*[u]rse)s$/, "\\1"],
-        [/\A(.*(cheese|close|cookie))s$/, "\\1"],
-        [/\A(.*(creche))s$/, "\\1"],
         [/\A(.*itis)es$/i, "\\1"],
         [/\A(.*alis)es$/i, "\\1"],
         [/\A(.*cirr)i$/i, "\\1us"],
         [/\A(.*nase)s$/i, "\\1"],
-        [/\A(.*database)s$/i, "\\1"],
-        [/\A(.*doe)s$/i, "\\1"],
-        [/\A(.*dose)s$/i, "\\1"],
-        [/\A(.*ease)s$/i, "\\1"],
-        [/\A(.*doggie)s$/i, "\\1"],
+        [/\A(.*galoshe)s$/i, "\\1"],
+        [/\A(.*haze)s$/i, "\\1"],
+        [/\A(.*(heart|head)ache)s$/i, "\\1"],
+        [/\A(.*hubris)es$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         [/\A(.*yrie)s$/, "\\1"],
         # ends in -ses
-        [/\A(.*(apse|abuse|anise|case|excuse))s$/, "\\1"],
+        [/\A(.*#{@category_se_ses.join("|")})s$/, "\\1"],
         [/\A(.*ipse)s$/, "\\1"],
-        [/\A(.*prise)s$/, "\\1"],
         [/\A(.*meris)es$/, "\\1"],
-        [/\A(.*alias)es$/, "\\1"],
-        [/\A(.*pose)s$/, "\\1"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})s$/, "\\1"],
         [/\A(.*m)en$/i, "\\1an"],
@@ -384,7 +426,7 @@ module Strings
         [/\A(.*f)oot$/i, "\\1eet"],
         [/\A(ox)$/i, "\\1en"],
         [/\A(.*qu)y$/i, "\\1ies"],
-        [/\A(.*di)e$/i, "\\1ce"],
+        [/\A(di)e$/i, "\\1ce"],
         [/\A(.*pen)ny$/i, "\\1ce"],
         [/\A(.*(append|matr))ix$/i, "\\1ices"],
         [/\A(.*trilby)$/i, "\\1s"],
@@ -394,6 +436,8 @@ module Strings
         [/\A(.*blouse)$/i, "\\1s"],
         [/\A(.*canvas)$/i, "\\1ses"],
         [/\A(.*(l|m))ouse$/i, "\\1ice"],
+        [/\A(.*gyro)$/i, "\\1s"],
+        [/\A(.*helo)$/i, "\\1s"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})$/, "\\1s"],
         [/\A(.*m)an$/i, "\\1en"],
