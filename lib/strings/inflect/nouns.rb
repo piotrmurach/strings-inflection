@@ -61,6 +61,7 @@ module Strings
         metro
         memo
         octavo
+        oregano
         photo
         pro
         quarto
@@ -118,6 +119,8 @@ module Strings
         goodie
         lie
         movie
+        necktie
+        oldie
         zombie
       ]
 
@@ -199,6 +202,9 @@ module Strings
         inverse
         merchandise
         mousse
+        noise
+        nose
+        nucleotidase
         pose
       ]
 
@@ -345,7 +351,12 @@ module Strings
         moose
         mosquito
         mumps
+        netball
         news
+        oasis
+        osmosis
+        oxygen
+        ozone
         pants
         pincers
         police
@@ -403,6 +414,9 @@ module Strings
         [/\A(.*nase)s$/i, "\\1"],
         [/\A(.*galoshe)s$/i, "\\1"],
         [/\A(.*(heart|head|moust|must)ache)s$/i, "\\1"],
+        [/\A(.*niche)s$/i, "\\1"],
+        [/\A(.*oboe)s$/i, "\\1"],
+        [/\A(.*olive)s$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         [/\A(.*yrie)s$/, "\\1"],
