@@ -52,9 +52,14 @@ module Strings
         limo
         logo
         lumbago
+        macro
+        maestro
         magneto
+        mambo
         manifesto
         medico
+        metro
+        memo
         octavo
         photo
         pro
@@ -112,6 +117,7 @@ module Strings
         floozie
         goodie
         lie
+        movie
         zombie
       ]
 
@@ -191,7 +197,15 @@ module Strings
         initialise
         initialize
         inverse
+        merchandise
+        mousse
         pose
+      ]
+
+      @category_ze_zes = %w[
+        haze
+        kamikaze
+        maize
       ]
 
       @uncountable = %w[
@@ -316,12 +330,20 @@ module Strings
         lox
         lycra
         mackerel
+        mankind
+        mathematics
         measles
-        means
-        measles
+        melatonin
+        mercury
+        methane
+        molasses
         money
+        most
         moose
+        multimedia
         mews
+        moose
+        mosquito
         mumps
         news
         pants
@@ -352,7 +374,7 @@ module Strings
       ]
 
       @singular_irregular = [
-        [/\A(.*[lf]ax)es$/i, "\\1"],
+        [/\A(.*[mlf]ax)es$/i, "\\1"],
         [/\A(.*ax)es$/i, "\\1is"],
         [/\A(.*avocado)s$/i, "\\1"],
         [/\A(.*iri)[ds]es$/, "\\1s"],
@@ -380,13 +402,12 @@ module Strings
         [/\A(.*cirr)i$/i, "\\1us"],
         [/\A(.*nase)s$/i, "\\1"],
         [/\A(.*galoshe)s$/i, "\\1"],
-        [/\A(.*(heart|head)ache)s$/i, "\\1"],
+        [/\A(.*(heart|head|moust|must)ache)s$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         [/\A(.*yrie)s$/, "\\1"],
         # ends in -zes
-        [/\A(.*haze)s$/i, "\\1"],
-        [/\A(.*kamikaze)s$/i, "\\1"],
+        [/\A(.*#{@category_ze_zes.join("|")})s$/, "\\1"],
         # ends in -ses
         [/\A(.*#{@category_se_ses.join("|")})s$/, "\\1"],
         [/\A(.*ease)s$/, "\\1"],
