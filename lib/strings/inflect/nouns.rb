@@ -171,7 +171,6 @@ module Strings
         dose
         doe
         disease
-        ease
         enterprise
         excuse
         expose
@@ -181,6 +180,10 @@ module Strings
         high-rise
         hoe
         hose
+        impulse
+        initialise
+        initialize
+        inverse
         pose
       ]
 
@@ -288,7 +291,9 @@ module Strings
         high-jinks
         homework
         innings
+        info
         information
+        internet
         jeans
         jackanapes
         mackerel
@@ -352,19 +357,20 @@ module Strings
         [/\A(.*[aum]ise)s$/, "\\1"],
         [/\A(.*[u]rse)s$/, "\\1"],
         [/\A(.*itis)es$/i, "\\1"],
-        [/\A(.*alis)es$/i, "\\1"],
+        [/\A(.*chrysalis)es$/i, "\\1"],
         [/\A(.*cirr)i$/i, "\\1us"],
         [/\A(.*nase)s$/i, "\\1"],
         [/\A(.*galoshe)s$/i, "\\1"],
         [/\A(.*haze)s$/i, "\\1"],
         [/\A(.*(heart|head)ache)s$/i, "\\1"],
-        [/\A(.*hubris)es$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         [/\A(.*yrie)s$/, "\\1"],
         # ends in -ses
         [/\A(.*#{@category_se_ses.join("|")})s$/, "\\1"],
+        [/\A(.*ease)s$/, "\\1"],
         [/\A(.*ipse)s$/, "\\1"],
+        [/\A(.*hubris)es$/i, "\\1"],
         [/\A(.*meris)es$/, "\\1"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})s$/, "\\1"],
