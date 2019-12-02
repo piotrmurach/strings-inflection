@@ -63,7 +63,14 @@ module Strings
         octavo
         oregano
         photo
+        piano
+        piccolo
+        pinto
+        placebo
         pro
+        polo
+        pomelo
+        poncho
         quarto
         rhino
         stylo
@@ -121,6 +128,9 @@ module Strings
         movie
         necktie
         oldie
+        pie
+        pinkie
+        prairie
         zombie
       ]
 
@@ -205,13 +215,23 @@ module Strings
         noise
         nose
         nucleotidase
+        paradise
+        phase
+        phrase
+        pickaxe
+        porpoise
         pose
+        prose
+        pulse
+        purchase
+        purpose
       ]
 
       @category_ze_zes = %w[
         haze
         kamikaze
         maize
+        prize
       ]
 
       @uncountable = %w[
@@ -357,12 +377,22 @@ module Strings
         osmosis
         oxygen
         ozone
+        paintwork
+        pantyhose
+        pathogenesis
         pants
+        physics
         pincers
+        pince-nez
         police
         postgres
         pliers
         proceedings
+        politics
+        police
+        press
+        proceedings
+        pyridine
         rain
         rabies
         rice
@@ -386,6 +416,7 @@ module Strings
 
       @singular_irregular = [
         [/\A(.*[mlf]ax)es$/i, "\\1"],
+        [/\A(.*[k]axe)s$/i, "\\1"],
         [/\A(.*ax)es$/i, "\\1is"],
         [/\A(.*avocado)s$/i, "\\1"],
         [/\A(.*iri)[ds]es$/, "\\1s"],
@@ -424,11 +455,13 @@ module Strings
         [/\A(.*#{@category_ze_zes.join("|")})s$/, "\\1"],
         # ends in -ses
         [/\A(.*#{@category_se_ses.join("|")})s$/, "\\1"],
+        [/\A(.*pancreas)es$/, "\\1"],
         [/\A(.*ease)s$/, "\\1"],
         [/\A(.*ipse)s$/, "\\1"],
         [/\A(.*hubris)es$/i, "\\1"],
         [/\A(.*meris)es$/, "\\1"],
         [/\A(.*lens)es$/, "\\1"],
+        [/\A(.*nis)es$/i, "\\1"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})s$/, "\\1"],
         [/\A(.*m)en$/i, "\\1an"],
@@ -502,6 +535,9 @@ module Strings
         [/\A(.*gyro)$/i, "\\1s"],
         [/\A(.*helo)$/i, "\\1s"],
         [/\A(.*lens)$/i, "\\1es"],
+        [/\A(.*patriarch)$/i, "\\1s"],
+        [/\A(.*nis)$/i, "\\1es"],
+        [/\A(.*pancreas)$/i, "\\1es"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})$/, "\\1s"],
         [/\A(.*m)an$/i, "\\1en"],
