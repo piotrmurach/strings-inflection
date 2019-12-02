@@ -43,9 +43,14 @@ module Strings
         ghetto
         guano
         halo
+        jalapeño
         inferno
         jumbo
+        kimono
         lingo
+        libido
+        limo
+        logo
         lumbago
         magneto
         manifesto
@@ -106,6 +111,7 @@ module Strings
         doggie
         floozie
         goodie
+        lie
         zombie
       ]
 
@@ -156,6 +162,7 @@ module Strings
         cactus
         fungus
         nucleus
+        leptocephalus
       ], "us")
 
       @category_se_ses = %w[
@@ -294,8 +301,20 @@ module Strings
         info
         information
         internet
-        jeans
         jackanapes
+        jazz
+        jeans
+        jellyfish
+        judo
+        karate
+        kendo
+        kingfish
+        laryngitis
+        lieu
+        linguistics
+        logistics
+        lox
+        lycra
         mackerel
         measles
         means
@@ -361,17 +380,20 @@ module Strings
         [/\A(.*cirr)i$/i, "\\1us"],
         [/\A(.*nase)s$/i, "\\1"],
         [/\A(.*galoshe)s$/i, "\\1"],
-        [/\A(.*haze)s$/i, "\\1"],
         [/\A(.*(heart|head)ache)s$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         [/\A(.*yrie)s$/, "\\1"],
+        # ends in -zes
+        [/\A(.*haze)s$/i, "\\1"],
+        [/\A(.*kamikaze)s$/i, "\\1"],
         # ends in -ses
         [/\A(.*#{@category_se_ses.join("|")})s$/, "\\1"],
         [/\A(.*ease)s$/, "\\1"],
         [/\A(.*ipse)s$/, "\\1"],
         [/\A(.*hubris)es$/i, "\\1"],
         [/\A(.*meris)es$/, "\\1"],
+        [/\A(.*lens)es$/, "\\1"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})s$/, "\\1"],
         [/\A(.*m)en$/i, "\\1an"],
@@ -444,6 +466,7 @@ module Strings
         [/\A(.*(l|m))ouse$/i, "\\1ice"],
         [/\A(.*gyro)$/i, "\\1s"],
         [/\A(.*helo)$/i, "\\1s"],
+        [/\A(.*lens)$/i, "\\1es"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})$/, "\\1s"],
         [/\A(.*m)an$/i, "\\1en"],
