@@ -217,9 +217,18 @@ module Strings
         djinn
         downstairs
         dynamics
-        equipment
+        earnings
+        eaves
+        east
+        economics
+        ego
+        electronics
         elk
         eland
+        emery
+        ethics
+        equipment
+        eyestrain
         fish
         flounder
         grass
@@ -307,9 +316,14 @@ module Strings
         [/\A(.*doggie)s$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
+        [/\A(.*yrie)s$/, "\\1"],
         # ends in -ses
-        [/\A(.*(apse|abuse|anise|case))s$/, "\\1"],
+        [/\A(.*(apse|abuse|anise|case|excuse))s$/, "\\1"],
+        [/\A(.*ipse)s$/, "\\1"],
+        [/\A(.*prise)s$/, "\\1"],
+        [/\A(.*meris)es$/, "\\1"],
         [/\A(.*alias)es$/, "\\1"],
+        [/\A(.*pose)s$/, "\\1"],
         # ends in -man
         [/\A(#{@category_man_mans.join("|")})s$/, "\\1"],
         [/\A(.*m)en$/i, "\\1an"],
@@ -332,7 +346,7 @@ module Strings
         [/\A(#{@category_a_ae.join("|")})e$/i, "\\1"],
         [/\A(.*)a$/i, "\\1on"],
         # ends in -ves
-        [/\A(.+[aeo]l)ves$/, "\\1f"],
+        [/\A(.*[aeo]l)ves$/, "\\1f"],
         [/\A(.*[^d]ea)ves$/, "\\1f"],
         [/\A(.*[nlw]i)ves$/i, "\\1fe"],
         [/\A(.+ar)ves$/i, "\\1f"],
@@ -343,6 +357,7 @@ module Strings
         [/\A(.+)zzes$/i, "\\1z"],
         [/\A(.+[en]ze)s$/i, "\\1"],
         [/\A(.+orse)s$/i, "\\1"],
+        [/\A(.*r[ct]ise)s$/, "\\1"],
         [/\A(.+[n]s)es$/i, "\\1e"],
         [/\A(.+[^ns]s)es$/i, "\\1is"],
         [/\A(.+(ss|sh|ch|x|z))es$/i, "\\1"],
@@ -385,6 +400,7 @@ module Strings
         # ends in -us
         [/(#{@category_us_i.join("|")})us$/, "\\1i"],
         # ends in -ch, -sh, -ss, -z, -x
+        [/\A(.*epoch)$/i, "\\1s"],
         [/\A(.*gas)$/i, "\\1ses"],
         # ends in -f
         [/\A(.*(tur|thie|loa|hoo))f$/i, "\\1ves"],
@@ -409,7 +425,7 @@ module Strings
         [/\A(.+[ie]z)$/i, "\\1zes"],
         [/\A(.+(ss|sh|ch|x|z))$/i, "\\1es"],
         # ends in -f/fe
-        [/\A(.+[aeo]l)f$/, "\\1ves"],
+        [/\A(.*[aeo]l)f$/, "\\1ves"],
         [/\A(.*[^d]ea)f$/, "\\1ves"],
         [/\A(.*[nlw]i)fe$/i, "\\1ves"],
         [/\A(.+ar)f$/i, "\\1ves"],
