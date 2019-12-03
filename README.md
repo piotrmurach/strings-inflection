@@ -6,8 +6,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/strings-inflection.svg)][gem]
 [![Build Status](https://secure.travis-ci.org/piotrmurach/strings-inflection.svg?branch=master)][travis]
-[![Build status](https://ci.appveyor.com/api/projects/status/v8beeg5pmsdncvu8?svg=true)][appveyor]
-[![Maintainability](https://api.codeclimate.com/v1/badges/4951f64ee240909fbde1/maintainability)][codeclimate]
+[![Build status](https://ci.appveyor.com/api/projects/status/huj82599jbk2quv2?svg=true)][appveyor]
+[![Maintainability](https://api.codeclimate.com/v1/badges/f7ecb5bf87696e522ccb/maintainability)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/strings-inflection/badge.svg?branch=master)][coverage]
 [![Inline docs](http://inch-ci.org/github/piotrmurach/strings-inflection.svg?branch=master)][inchpages]
 
@@ -47,7 +47,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install strings-inflect
+    $ gem install strings-inflection
 
 ## Contents
 
