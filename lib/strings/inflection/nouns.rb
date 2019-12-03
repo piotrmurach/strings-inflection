@@ -81,6 +81,13 @@ module Strings
         sombrero
         stiletto
         stucco
+        taco
+        taro
+        tobacco
+        tomatillo
+        tornado
+        torso
+        tuxedo
       ]
 
       @category_ex_ices = to_stem(%w[
@@ -136,6 +143,7 @@ module Strings
         pinkie
         prairie
         ramie
+        tie
         zombie
       ]
 
@@ -240,6 +248,13 @@ module Strings
         suitcase
         sunrise
         surprise
+        tortoise
+        universe
+        use
+        vase
+        verse
+        viscose
+        vise
       ]
 
       @category_ze_zes = %w[
@@ -282,6 +297,7 @@ module Strings
         cattle
         celeriac
         celsius
+        chemotaxis
         cod
         coevolution
         collagen
@@ -443,17 +459,52 @@ module Strings
         sustenance
         sweets
         swordfish
+        tech
+        tectonics
+        tennis
+        teriyaki
+        thanks
         tights
-        tongs
+        thermals
         trousers
-        tuna
+        tights
+        titanium
+        today
+        tonight
+        tongs
+        tomography
+        trash
         trout
+        trigonometry
+        tuna
+        twins
+        underclothes
+        underpants
+        upstairs
+        vascular
+        veal
+        venison
+        vertigo
+        veto
+        vitro
+        vivo
+        volcano
+        voting
+        warfare
+        wasabi
+        watercress
+        wealth
         whiting
         wildebeest
+        wheat
+        west
+        whey
+        woolens
+        willingness
       ]
 
       @singular_irregular = [
-        [/\A(.*[mlf]ax)es$/i, "\\1"],
+        [/\A(.*[mlftw]ax)es$/i, "\\1"],
         [/\A(.*[k]axe)s$/i, "\\1"],
         [/\A(.*ax)es$/i, "\\1is"],
         [/\A(.*iri)[ds]es$/, "\\1s"],
@@ -475,7 +526,7 @@ module Strings
         [/\A(.*canoe)s$/, "\\1"],
         [/\A(.*[aum]ise)s$/, "\\1"],
         [/\A(.*[u]rse)s$/, "\\1"],
-        [/\A(.*itis)es$/i, "\\1"],
+        [/\A(.*(trell|it)is)es$/i, "\\1"],
         [/\A(.*chrysalis)es$/i, "\\1"],
         [/\A(.*cirr)i$/i, "\\1us"],
         [/\A(.*nase)s$/i, "\\1"],
@@ -483,6 +534,7 @@ module Strings
         [/\A(.*(galoshe|quiche|niche))s$/i, "\\1"],
         [/\A(.*oboe)s$/i, "\\1"],
         [/\A(.*olive)s$/i, "\\1"],
+        [/\A(toe)s$/i, "\\1"],
         # ends in -ies
         [/\A(.*#{@category_ie_ies.join("|")})s$/, "\\1"],
         [/\A(.*yrie)s$/, "\\1"],
@@ -562,7 +614,7 @@ module Strings
         [/\A(.*(append|matr))ix$/i, "\\1ices"],
         [/\A(.*trilby)$/i, "\\1s"],
         [/\A(.*loo)ey$/i, "\\1ies"],
-        [/\A(.*chrysalis)$/i, "\\1es"],
+        [/\A(.*(chrysa|trel)lis)$/i, "\\1es"],
         [/\A(.*cirr)us$/i, "\\1i"],
         [/\A(.*blouse)$/i, "\\1s"],
         [/\A(.*canvas)$/i, "\\1ses"],
