@@ -77,6 +77,10 @@ module Strings
         tempo
         solo
         soprano
+        silo
+        sombrero
+        stiletto
+        stucco
       ]
 
       @category_ex_ices = to_stem(%w[
@@ -131,6 +135,7 @@ module Strings
         pie
         pinkie
         prairie
+        ramie
         zombie
       ]
 
@@ -182,6 +187,7 @@ module Strings
         fungus
         nucleus
         leptocephalus
+        stimulus
       ], "us")
 
       @category_se_ses = %w[
@@ -225,6 +231,15 @@ module Strings
         pulse
         purchase
         purpose
+        refuse
+        resolve
+        reverse
+        rise
+        rose
+        staircase
+        suitcase
+        sunrise
+        surprise
       ]
 
       @category_ze_zes = %w[
@@ -232,6 +247,7 @@ module Strings
         kamikaze
         maize
         prize
+        size
       ]
 
       @uncountable = %w[
@@ -393,9 +409,15 @@ module Strings
         press
         proceedings
         pyridine
+        quinoa
         rain
         rabies
+        reindeer
         rice
+        rhinoceros
+        robotics
+        rubbish
+        rugby
         salmon
         series
         sheep
@@ -405,6 +427,22 @@ module Strings
         swine
         scissors
         sea-bass
+        seafood
+        semantics
+        series
+        soccer
+        software
+        soot
+        soy
+        spaghetti
+        spandex
+        stamina
+        subconscious
+        sushi
+        suspenders
+        sustenance
+        sweets
+        swordfish
         tights
         tongs
         trousers
@@ -418,7 +456,6 @@ module Strings
         [/\A(.*[mlf]ax)es$/i, "\\1"],
         [/\A(.*[k]axe)s$/i, "\\1"],
         [/\A(.*ax)es$/i, "\\1is"],
-        [/\A(.*avocado)s$/i, "\\1"],
         [/\A(.*iri)[ds]es$/, "\\1s"],
         [/\A(.*ox)en$/i, "\\1"],
         [/\A(.*child)ren$/i, "\\1"],
@@ -433,7 +470,6 @@ module Strings
         [/\A(.*pen)ce$/i, "\\1ny"],
         [/\A(.*(append|matr))ices$/i, "\\1ix"],
         [/\A(.*loo)ies$/i, "\\1ey"],
-        [/\A(.+ceps)$/i, "\\1"],
         [/\A(.*(l|m))ice$/i, "\\1ouse"],
         [/\A(.*lanche)s$/, "\\1"],
         [/\A(.*canoe)s$/, "\\1"],
@@ -443,9 +479,8 @@ module Strings
         [/\A(.*chrysalis)es$/i, "\\1"],
         [/\A(.*cirr)i$/i, "\\1us"],
         [/\A(.*nase)s$/i, "\\1"],
-        [/\A(.*galoshe)s$/i, "\\1"],
         [/\A(.*(heart|head|moust|must)ache)s$/i, "\\1"],
-        [/\A(.*niche)s$/i, "\\1"],
+        [/\A(.*(galoshe|quiche|niche))s$/i, "\\1"],
         [/\A(.*oboe)s$/i, "\\1"],
         [/\A(.*olive)s$/i, "\\1"],
         # ends in -ies
@@ -544,7 +579,7 @@ module Strings
         # ends in -us
         [/(#{@category_us_i.join("|")})us$/, "\\1i"],
         # ends in -ch, -sh, -ss, -z, -x
-        [/\A(.*epoch)$/i, "\\1s"],
+        [/\A(.*(stomach|epoch))$/i, "\\1s"],
         [/\A(.*gas)$/i, "\\1ses"],
         # ends in -f
         [/\A(.*(tur|thie|loa|hoo))f$/i, "\\1ves"],
