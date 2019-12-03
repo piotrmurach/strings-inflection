@@ -24,7 +24,7 @@
 
 ## Motivation
 
-The goal is to provide a comprehensive way to inflect most nouns and verbs in English. The algorithms that this gem uses are based on the analysis of 6,500 most frequently used nouns and around 6,000 most used verbs in English language. Because of this you will get correct inflections for most words:
+The goal is to provide a comprehensive way to inflect most nouns and verbs in English. The algorithms that this gem uses are based on the analysis of 7,000 most frequently used nouns and 6,000 most used verbs in English language. Because of this you will get correct inflections for most words:
 
 ```ruby
 Strings::Inflection.pluralize("cod") # => "cod"
