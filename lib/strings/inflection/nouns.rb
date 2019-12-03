@@ -88,6 +88,8 @@ module Strings
         tornado
         torso
         tuxedo
+        yoyo
+        zero
       ]
 
       @category_ex_ices = to_stem(%w[
@@ -501,6 +503,10 @@ module Strings
         whey
         woolens
         willingness
+        yang
+        yoga
+        young
+        zebrafish
       ]
 
       @singular_irregular = [
