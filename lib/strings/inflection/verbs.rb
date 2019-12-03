@@ -14,8 +14,8 @@ module Strings
       ]
 
       @singular_irregular = [
-        [/\Aare$/, "is"],
-        [/\Awere$/, "was"],
+        [/\A(is|are)$/, "is"],
+        [/\A(was|were)$/, "was"],
         [/\A(ha)ve$/, "\\1s"],
         [/(.*go|do)$/, "\\1es"],
         [/(.*demo)$/, "\\1s"],

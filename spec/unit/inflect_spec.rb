@@ -32,13 +32,13 @@ RSpec.describe Strings::Inflection, "#inflect" do
   end
 
   it "uses template vars in plural" do
-    template = "{{#:count}} {{N:errors}} {{V:were}} found"
+    template = "{{#:count}} {{N:errors}} {{V:was}} found"
 
     expect(Strings::Inflection.inflect(template, 1)).to eq("1 error was found")
   end
 
   it "allows to force template singular form" do
-    template = "{{#:count}} {{Ns:error}} {{V:were}} found"
+    template = "{{#:count}} {{Ns:error}} {{V:was}} found"
 
     expect(Strings::Inflection.inflect(template, 2)).to eq("2 error were found")
   end
