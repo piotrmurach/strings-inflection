@@ -317,6 +317,14 @@ Strings::Inflection.join_words("one", "two", "three", **options)
 # => "one or two or at least three"
 ```
 
+You can also use noun objects to join words. We could do the above:
+
+```ruby
+N = Strings::Inflection::Noun
+(N("one") + "two" + "three").join_words
+# => "one, two, and three"
+```
+
 ### 2.7 configure
 
 To change any inflection rules use `configure` with a block. By default the rules only apply to nouns.
