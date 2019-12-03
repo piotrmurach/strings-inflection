@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Strings
-  module Inflect
+  module Inflection
     module Nouns
       # Remove suffix from a word
       #
@@ -618,5 +618,5 @@ module Strings
       end
       module_function :plurals
     end # Nouns
-  end # Inflect
+  end # Inflection
 end # Strings

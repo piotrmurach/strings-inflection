@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "strings/inflect/extensions"
+require "strings/inflection/extensions"
 
-using Strings::Inflect::Extensions
+using Strings::Inflection::Extensions
 
-RSpec.describe Strings::Inflect::Extensions do
+RSpec.describe Strings::Inflection::Extensions do
   it "inflects a noun" do
     expect("error".inflect(2)).to eq("errors")
   end

@@ -4,4 +4,4 @@
 
 * Initial implementation and release
 
-[v0.1.0]: https://github.com/piotrmurach/strings-inflect/compare/v0.1.0
+[v0.1.0]: https://github.com/piotrmurach/strings-inflection/compare/v0.1.0

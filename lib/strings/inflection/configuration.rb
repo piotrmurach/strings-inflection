@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Strings
-  module Inflect
+  module Inflection
     class Configuration
 
       attr_reader :plurals, :singulars, :uncountables
@@ -80,5 +80,5 @@ module Strings
         instance_variable_set "@#{name}", { noun: [], verb: [] }
       end
     end # Configuration
-  end # Inflect
+  end # Inflection
 end # Strings

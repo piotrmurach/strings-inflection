@@ -5,7 +5,7 @@ require "strscan"
 require_relative "noun"
 
 module Strings
-  module Inflect
+  module Inflection
     class Parser
       # Parse a string by evaluating content inside tags
       #
@@ -95,5 +95,5 @@ module Strings
         end
       end
     end # Parser
-  end # Inflect
+  end # Inflection
 end # Strings

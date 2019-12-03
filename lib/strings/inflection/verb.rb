@@ -4,7 +4,7 @@ require_relative "term"
 require_relative "verbs"
 
 module Strings
-  module Inflect
+  module Inflection
     class Verb < Term
       # Check if word is uninflected
       #
@@ -21,7 +21,7 @@ module Strings
       # Inflect a word to its singular form
       #
       # @example
-      #   Strings::Inflect::Verb.new("go").singular
+      #   Strings::Inflection::Verb.new("go").singular
       #   # => "goes"
       #
       # @return [String]
@@ -37,7 +37,7 @@ module Strings
       # Inflect a word to its plural form
       #
       # @example
-      #   Strings::Inflect::Verb.new("goes").plural
+      #   Strings::Inflection::Verb.new("goes").plural
       #   # => "go"
       #
       # @return [String]
@@ -50,5 +50,5 @@ module Strings
         find_match(Verbs.plurals) || word
       end
     end # Verb
-  end # Inflect
+  end # Inflection
 end # Strings

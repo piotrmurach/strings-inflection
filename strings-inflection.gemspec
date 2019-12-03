@@ -1,10 +1,10 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "strings/inflect/version"
+require "strings/inflection/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "strings-inflect"
-  spec.version       = Strings::Inflect::VERSION
+  spec.version       = Strings::Inflection::VERSION
   spec.authors       = ["Piotr Murach"]
   spec.email         = ["me@piotrmurach.com"]
   spec.summary       = %q{Convert between singular and plural forms of English nouns.}

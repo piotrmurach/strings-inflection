@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative "inflect/configuration"
-require_relative "inflect/noun"
-require_relative "inflect/parser"
-require_relative "inflect/verb"
-require_relative "inflect/version"
+require_relative "inflection/configuration"
+require_relative "inflection/noun"
+require_relative "inflection/parser"
+require_relative "inflection/verb"
+require_relative "inflection/version"
 
 module Strings
-  module Inflect
+  module Inflection
     # Error raised by this inflector
     class Error < StandardError; end
 
@@ -77,7 +77,7 @@ module Strings
     # Inflect a noun into a correct form
     #
     # @example
-    #   Strings::Inflect.inflect("error", 3)
+    #   Strings::Inflection.inflect("error", 3)
     #   # => "errors"
     #
     # @param [String] word
@@ -96,7 +96,7 @@ module Strings
     # Inflect a pural word to its singular form
     #
     # @example
-    #   Strings::Inflect.singularize("errors")
+    #   Strings::Inflection.singularize("errors")
     #   # => "error"
     #
     # @param [String] word
@@ -116,7 +116,7 @@ module Strings
     # Inflect a word to its plural form
     #
     # @example
-    #   Strings::Inflect.pluralize("error")
+    #   Strings::Inflection.pluralize("error")
     #   # => "errors"
     #
     # @param [String] word
@@ -136,7 +136,7 @@ module Strings
     # Check if noun is in singular form
     #
     # @example
-    #   Strings::Inflect.singular?("error")
+    #   Strings::Inflection.singular?("error")
     #   # => true
     #
     # @return [Boolean]
@@ -157,7 +157,7 @@ module Strings
     # Check if noun is in plural form
     #
     # @example
-    #   Strings::Inflect.plural?("errors")
+    #   Strings::Inflection.plural?("errors")
     #   # => true
     #
     # @return [Boolean]
@@ -180,7 +180,7 @@ module Strings
     # Join a list of words into a single sentence
     #
     # @example
-    #   Strings::Inflect.join_words("one", "two", "three")
+    #   Strings::Inflection.join_words("one", "two", "three")
     #   # => "one, two and three"
     #
     # @param [Array[String]] words
@@ -210,5 +210,5 @@ module Strings
       end
     end
     module_function :join_words
-  end # Inflect
+  end # Inflection
 end # Strings

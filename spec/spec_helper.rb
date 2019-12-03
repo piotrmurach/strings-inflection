@@ -16,7 +16,7 @@ if ENV["COVERAGE"] || ENV["TRAVIS"]
 end
 
 require "bundler/setup"
-require "strings/inflect"
+require "strings/inflection"
 
 module Helpers
   def gem_root

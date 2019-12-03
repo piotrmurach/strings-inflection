@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Strings::Inflect, "#plural?" do
+RSpec.describe Strings::Inflection, "#plural?" do
   {
     "doors" => true,
     "door" => false,
@@ -8,7 +8,7 @@ RSpec.describe Strings::Inflect, "#plural?" do
     "index" => false
   }.each do |word, expected|
     it "checks if '#{word.inspect}' is a plural noun" do
-      expect(Strings::Inflect.plural?(word)).to eq(expected)
+      expect(Strings::Inflection.plural?(word)).to eq(expected)
     end
   end
 
@@ -19,13 +19,13 @@ RSpec.describe Strings::Inflect, "#plural?" do
     "goes" => false
   }.each do |word, expected|
     it "checks if '#{word.inspect}' is a plural verb" do
-      expect(Strings::Inflect.plural?(word, term: :verb)).to eq(expected)
+      expect(Strings::Inflection.plural?(word, term: :verb)).to eq(expected)
     end
   end
 
   it "fails when inflecting unknown term" do
     expect {
-      Strings::Inflect.plural?("word", term: :unknown)
+      Strings::Inflection.plural?("word", term: :unknown)
     }.to raise_error("Unknown option 'unknown' as a term")
   end
 end

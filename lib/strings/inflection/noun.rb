@@ -4,7 +4,7 @@ require_relative "term"
 require_relative "nouns"
 
 module Strings
-  module Inflect
+  module Inflection
     class Noun < Term
       # Check if word is uncountable
       #
@@ -15,14 +15,14 @@ module Strings
       #
       # @api private
       def uncountable?
-        Inflect.configuration.uncountables[:noun].include?(word.downcase) ||
+        Inflection.configuration.uncountables[:noun].include?(word.downcase) ||
           Nouns.uncountable.include?(word.downcase)
       end
 
       # Inflect a word to its singular form
       #
       # @example
-      #   Strings::Inflect::Noun.new("errors").singular
+      #   Strings::Inflection::Noun.new("errors").singular
       #   # => "error"
       #
       # @param [String] word
@@ -32,14 +32,14 @@ module Strings
       def singular
         return word if word.to_s.empty?
 
-        find_match(Inflect.configuration.singulars[:noun]) ||
+        find_match(Inflection.configuration.singulars[:noun]) ||
           (uncountable? && word) || find_match(Nouns.singulars) || word
       end
 
       # Inflect a word to its plural form
       #
       # @example
-      #   Strings::Inflect::Noun.new("error").plural
+      #   Strings::Inflection::Noun.new("error").plural
       #   # => "errors"
       #
       # @param [String] word
@@ -49,9 +49,9 @@ module Strings
       def plural
         return word if word.to_s.empty?
 
-        find_match(Inflect.configuration.plurals[:noun]) ||
+        find_match(Inflection.configuration.plurals[:noun]) ||
           (uncountable? && word) || find_match(Nouns.plurals) || word
       end
     end # Noun
-  end # Inflect
+  end # Inflection
 end # Strings

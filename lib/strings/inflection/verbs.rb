@@ -1,7 +1,7 @@
 # frozen_string_litearl: true
 
 module Strings
-  module Inflect
+  module Inflection
     module Verbs
 
       @uninflected = [
@@ -126,5 +126,5 @@ module Strings
       end
       module_function :plurals
     end # Verbs
-  end # Inflect
+  end # Inflection
 end # Strings

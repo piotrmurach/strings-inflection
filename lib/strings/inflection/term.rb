@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Strings
-  module Inflect
+  module Inflection
     class Term
       # Create a term
       #
@@ -40,7 +40,7 @@ module Strings
       # Check if noun is in singular form
       #
       # @example
-      #   Strings::Inflect::Noun.new("error").singular?
+      #   Strings::Inflection::Noun.new("error").singular?
       #   # => true
       #
       # @return [Boolean]
@@ -55,7 +55,7 @@ module Strings
       # Check if noun is in plural form
       #
       # @example
-      #   Strings::Inflect::Noun.new("errors").plural?
+      #   Strings::Inflection::Noun.new("errors").plural?
       #   # => true
       #
       # @return [Boolean]
@@ -74,5 +74,5 @@ module Strings
         word.to_s
       end
     end # Term
-  end # Inflect
+  end # Inflection
 end # Strings
