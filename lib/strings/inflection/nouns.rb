@@ -43,7 +43,7 @@ module Strings
         ghetto
         guano
         halo
-        jalapeño
+        jalapeno
         inferno
         jumbo
         kimono
