@@ -50,4 +50,9 @@ RSpec.describe Strings::Inflection, "#join_words" do
     expect(Strings::Inflection.join_words("   one   ", "    two   ", "    three    "))
       .to eq(" one, two, and three ")
   end
+
+  it "joins noun objects" do
+    joined = Strings::Inflection::Noun("one") + "two" + "three"
+    expect(joined.join_words).to eq("one, two, and three")
+  end
 end

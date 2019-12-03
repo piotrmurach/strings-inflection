@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "combined_noun"
 require_relative "term"
 require_relative "nouns"
 
@@ -51,6 +52,18 @@ module Strings
 
         find_match(Inflection.configuration.plurals[:noun]) ||
           (uncountable? && word) || find_match(Nouns.plurals) || word
+      end
+
+      # Combine this noun with another word
+      #
+      # @param [String] other_word
+      #   the other word to combined with
+      #
+      # @return [CombinedNoun]
+      #
+      # @api public
+      def +(other_word)
+        CombinedNoun.new([word, other_word])
       end
     end # Noun
   end # Inflection

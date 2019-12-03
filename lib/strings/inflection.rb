@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require_relative "inflection/combined_noun"
 require_relative "inflection/configuration"
 require_relative "inflection/noun"
 require_relative "inflection/parser"
@@ -175,7 +175,6 @@ module Strings
     end
     module_function :plural?
 
-    WHITESPACE_REGEX = /(\s)\s+/.freeze
 
     # Join a list of words into a single sentence
     #
@@ -195,19 +194,8 @@ module Strings
     # @return [String]
     #
     # @api public
-    def join_words(*words, separator: ", ", conjunctive: "and", final_separator: nil)
-      oxford_comma = final_separator || separator
-
-      case words.length
-      when 0
-        ""
-      when 1, 2
-        words.join(" #{conjunctive} ").gsub(WHITESPACE_REGEX, "\\1")
-      else
-        ((words[0...-1]).join("#{separator}") +
-         "#{oxford_comma} #{conjunctive} " + words[-1])
-          .gsub(WHITESPACE_REGEX, "\\1").gsub(/\s*(,)/, "\\1")
-      end
+    def join_words(*words, **options)
+      CombinedNoun.new(words).join_words(**options)
     end
     module_function :join_words
   end # Inflection
