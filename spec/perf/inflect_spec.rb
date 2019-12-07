@@ -14,7 +14,15 @@ RSpec.describe Strings::Inflection do
     }.at_most(1.6).times
   end
 
-  it "allocates" do
+  it "singularizes nouns as fast as ActiveSupport" do
+    expect {
+      Strings::Inflection.singularize("errors")
+    }.to perform_slower_than {
+      ActiveSupport::Inflector.singularize("errors")
+    }.at_most(1.8).times
+  end
+
+  it "allocates no more than 40 objects" do
     expect {
       Strings::Inflection.pluralize("error")
     }.to perform_allocation(40)
