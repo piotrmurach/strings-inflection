@@ -65,17 +65,32 @@ module Strings
       # @api private
       def parse_count
         if @scanner.scan(/\{\{#([^\}]*?):([^\}]+?)\}\}/)
+          require "strings-numeral"
           option = @scanner[1].to_s.tr(" ", "").downcase
-          if option =~ /[^f]/
+          if option =~ /[^fwo\d]/
             raise "Unknown option '#{option}' in {{#:...}} tag"
           end
-          amount = case option
-                   when "f"
-                     fuzzy_count(@count)
-                   else
-                     @count
-                   end
-          @value << amount
+          @value << parse_count_flags(option)
+        end
+      end
+
+      # @api private
+      def parse_count_flags(option)
+        case option
+        when -> (opt) { opt =~ /w/ && opt =~ /o/ }
+          Strings::Numeral.ordinalize(@count)
+        when /w(\d*)/
+          if $1.empty? || @count <= $1.to_i
+            Strings::Numeral.cardinalize(@count)
+          else
+            @count
+          end
+        when "o"
+          Strings::Numeral.ordinalize(@count, short: true)
+        when "f"
+          fuzzy_count(@count)
+        else
+          @count
         end
       end
 

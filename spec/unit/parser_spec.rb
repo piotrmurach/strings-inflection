@@ -57,11 +57,31 @@ RSpec.describe Strings::Inflection::Parser do
         Strings::Inflection::Parser.parse(template, 2)
       }.to raise_error("Unknown option 'u' in {{#:...}} tag")
     end
+
+    it "counts with number as cardinal words" do
+      expect(Strings::Inflection::Parser.parse("{{#w: count}}", 12)).to eq("twelve")
+    end
+
+    it "counts with number as cardinal words up to the limit" do
+      expect(Strings::Inflection::Parser.parse("{{#w10: count}}", 12)).to eq("12")
+    end
+
+    it "counts with a short ordinal" do
+      expect(Strings::Inflection::Parser.parse("{{#o: count}}", 12)).to eq("12th")
+    end
+
+    it "counts with an ordinal" do
+      expect(Strings::Inflection::Parser.parse("{{# o w : count}}", 12)).to eq("twelfth")
+    end
   end
 
   context "count fuzzy" do
     it "allows for space between separator" do
       expect(Strings::Inflection::Parser.parse("{{# f  :  count   }}", 0)).to eq("no")
+    end
+
+    it "allows for capital letter" do
+      expect(Strings::Inflection::Parser.parse("{{#F:count}}", 0)).to eq("no")
     end
 
     it "changes 0 count to no " do
