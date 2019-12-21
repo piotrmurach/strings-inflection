@@ -48,4 +48,16 @@ RSpec.describe Strings::Inflection, "#inflect" do
 
     expect(Strings::Inflection.inflect(template, 2)).to eq("a couple of errors were found")
   end
+
+  it "changes template count to use words for a number" do
+    template = "{{#w:count}} {{N:error}} {{V:was}} found"
+
+    expect(Strings::Inflection.inflect(template, 2)).to eq("two errors were found")
+  end
+
+  it "changes template count to use ordinal words for a number" do
+    template = "{{#wo:count}} {{Ns:result}}"
+
+    expect(Strings::Inflection.inflect(template, 2)).to eq("second result")
+  end
 end
