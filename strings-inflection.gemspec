@@ -1,6 +1,4 @@
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "strings/inflection/version"
+require_relative "lib/strings/inflection/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "strings-inflection"
@@ -11,16 +9,13 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Inflect English nouns and verbs. The algorithms are based on the analysis of 7,000 most frequently used nouns and 6,000 most used verbs in English language.}
   spec.homepage      = "https://github.com/piotrmurach/strings-inflection"
   spec.license       = "MIT"
-
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "https://rubygems.org"
-    spec.metadata["changelog_uri"] = "https://github.com/piotrmurach/strings-inflection/blob/master/CHANGELOG.md"
-    spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/strings-inflection"
-    spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/piotrmurach/strings-inflection"
-  end
-
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
+  spec.metadata["changelog_uri"] = "https://github.com/piotrmurach/strings-inflection/blob/master/CHANGELOG.md"
+  spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/strings-inflection"
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/piotrmurach/strings-inflection"
   spec.files         = Dir["lib/**/*", "README.md", "CHANGELOG.md", "LICENSE.txt"]
+  spec.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
   spec.bindir        = "exe"
   spec.require_paths = ["lib"]
   spec.required_ruby_version = ">= 2.0.0"
