@@ -23,15 +23,13 @@ module Strings
       #
       # @api public
       def Noun(word)
-        # TODO: Probably use an internal registry.
-        Noun[word]
+        Noun.new(word, inflector: self)
       end
 
       # Create a verb object
       #
       # @api public
       def Verb(word)
-        # TODO: Probably use an internal registry.
         Verb[word]
       end
 
@@ -68,8 +66,7 @@ module Strings
       #
       # @api private
       def uncountable?(word)
-        # TODO: Probably look up in the current registry.
-        Noun[word].uncountable?
+        Noun(word).uncountable?
       end
 
       # Inflect a noun into a correct form
@@ -103,11 +100,9 @@ module Strings
       def singularize(word, term: :noun)
         case term
         when :noun, :n
-          # TODO: Probably lookup in the current registry.
-          Noun[word].singular
+          Noun(word).singular
         when :verb, :v
-          # TODO: Probably lookup in the current registry.
-          Verb[word].singular
+          Verb(word).singular
         end
       end
 
@@ -124,11 +119,9 @@ module Strings
       def pluralize(word, term: :noun)
         case term
         when :noun, :n
-          # TODO: Probably lookup in the current registry.
-          Noun[word].plural
+          Noun(word).plural
         when :verb, :v
-          # TODO: Probably lookup in the current registry.
-          Verb[word].plural
+          Verb(word).plural
         end
       end
 
@@ -144,11 +137,9 @@ module Strings
       def singular?(word, term: :noun)
         case term.to_sym
         when :noun, :n
-          # TODO: Probably lookup in the current registry.
-          Noun[word].singular?
+          Noun(word).singular?
         when :verb, :v
-          # TODO: Probably lookup in the current registry.
-          Verb[word].singular?
+          Verb(word).singular?
         else
           raise Error, "Unknown option '#{term}' as a term"
         end
@@ -166,11 +157,9 @@ module Strings
       def plural?(word, term: :noun)
         case term.to_sym
         when :noun, :n
-          # TODO: Probably lookup in the current registry.
-          Noun[word].plural?
+          Noun(word).plural?
         when :verb, :v
-          # TODO: Probably lookup in the current registry.
-          Verb[word].plural?
+          Verb(word).plural?
         else
           raise Error, "Unknown option '#{term}' as a term"
         end

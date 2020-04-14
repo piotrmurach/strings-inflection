@@ -7,6 +7,14 @@ require_relative "nouns"
 module Strings
   module Inflection
     class Noun < Term
+      attr_reader :inflector
+
+      def initialize(word, inflector: Inflection.global)
+        @inflector = inflector
+
+        super(word)
+      end
+
       # Check if word is uncountable
       #
       # @param [String] word
@@ -16,7 +24,7 @@ module Strings
       #
       # @api private
       def uncountable?
-        Inflection.configuration.uncountables[:noun].include?(word.downcase) ||
+        inflector.configuration.uncountables[:noun].include?(word.downcase) ||
           Nouns.uncountable.include?(word.downcase)
       end
 
@@ -33,7 +41,7 @@ module Strings
       def singular
         return word if word.to_s.empty?
 
-        find_match(Inflection.configuration.singulars[:noun]) ||
+        find_match(inflector.configuration.singulars[:noun]) ||
           (uncountable? && word) || find_match(Nouns.singulars) || word
       end
 
@@ -50,7 +58,7 @@ module Strings
       def plural
         return word if word.to_s.empty?
 
-        find_match(Inflection.configuration.plurals[:noun]) ||
+        find_match(inflector.configuration.plurals[:noun]) ||
           (uncountable? && word) || find_match(Nouns.plurals) || word
       end
 
