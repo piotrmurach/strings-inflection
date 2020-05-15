@@ -396,7 +396,7 @@ using MyStringExt
 However, if you want to include all the **Strings::Inflection** methods, you can use provided extensions file:
 
 ```ruby
-require "strings/inflect/extensions"
+require "strings/inflection/extensions"
 
 using Strings::Inflection::Extensions
 ```
