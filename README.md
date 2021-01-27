@@ -5,14 +5,14 @@
 # Strings::Inflection
 
 [![Gem Version](https://badge.fury.io/rb/strings-inflection.svg)][gem]
-[![Build Status](https://secure.travis-ci.org/piotrmurach/strings-inflection.svg?branch=master)][travis]
+[![Actions CI](https://github.com/piotrmurach/strings-inflection/workflows/CI/badge.svg?branch=master)][gh_actions_ci]
 [![Build status](https://ci.appveyor.com/api/projects/status/huj82599jbk2quv2?svg=true)][appveyor]
 [![Maintainability](https://api.codeclimate.com/v1/badges/f7ecb5bf87696e522ccb/maintainability)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/strings-inflection/badge.svg?branch=master)][coverage]
 [![Inline docs](http://inch-ci.org/github/piotrmurach/strings-inflection.svg?branch=master)][inchpages]
 
 [gem]: http://badge.fury.io/rb/strings-inflection
-[travis]: http://travis-ci.org/piotrmurach/strings-inflection
+[gh_actions_ci]: https://github.com/piotrmurach/strings-inflection/actions?query=workflow%3ACI
 [appveyor]: https://ci.appveyor.com/project/piotrmurach/strings-inflection
 [codeclimate]: https://codeclimate.com/github/piotrmurach/strings-inflection/maintainability
 [coverage]: https://coveralls.io/github/piotrmurach/strings-inflection?branch=master
